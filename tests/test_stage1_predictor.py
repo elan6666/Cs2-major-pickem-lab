@@ -18,6 +18,7 @@ from stage1_predictor.map_veto import best_of_three_probability, load_map_stats,
 from stage1_predictor.model_registry import apply_team_model
 from stage1_predictor.build_hltv_feature_snapshot import build_hltv_feature_snapshot
 from stage1_predictor.build_catboost_pretrain_from_hltv_matches import build_pretrain_rows
+from stage1_predictor.build_vrs_tier_map_features import Observation, build_team_map_rows, overtime_target, scoreline_quality
 from stage1_predictor.collect_bo3_dataset import flatten_veto_actions, render_veto_sequence
 from stage1_predictor.factor_snapshot import build_factor_rows, load_factor_weights
 from stage1_predictor.hltv_data import (
@@ -460,6 +461,45 @@ class Stage1PredictorTests(unittest.TestCase):
         self.assertEqual(examples[0].target, 1)
         self.assertEqual(examples[0].weight, 0.5)
         self.assertTrue(provenance.ok)
+
+    def test_catboost_pretrain_accepts_missing_optional_vrs_tier_columns(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "pretrain.csv"
+            legacy_features = [
+                name
+                for name in FEATURES
+                if not name.startswith("vrs_tier_") and not (name.startswith("vrs_top") and "_map_" in name)
+            ]
+            path.write_text(
+                ",".join([*legacy_features, "target", "sample_weight"]) + "\n"
+                + ",".join(
+                    ["0" if name in NUMERIC_FEATURES else "X" for name in legacy_features]
+                    + ["1", "0.5"]
+                )
+                + "\n",
+                encoding="utf-8",
+            )
+            examples = load_pretrain_examples(path)
+        self.assertEqual(len(examples), 1)
+        self.assertEqual(examples[0].features["vrs_tier_map_strength_diff"], 0.0)
+
+    def test_vrs_tier_scoreline_features_are_mr12_and_overtime_aware(self) -> None:
+        self.assertEqual(overtime_target(16), 16)
+        self.assertEqual(overtime_target(19), 19)
+        self.assertAlmostEqual(scoreline_quality(3, 13), -1.0)
+        self.assertAlmostEqual(scoreline_quality(11, 13), -0.2)
+        self.assertLess(abs(scoreline_quality(14, 16)), 0.2)
+        rows = build_team_map_rows(
+            [
+                Observation("Team A", "Ancient", 8, True, 10, scoreline_quality(13, 3), False, False),
+                Observation("Team A", "Ancient", 18, False, -2, scoreline_quality(14, 16), True, True),
+            ]
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["vrs_top10_maps"], "1")
+        self.assertEqual(rows[0]["vrs_top20_maps"], "2")
+        self.assertEqual(rows[0]["vrs_bucket_11_20_maps"], "1")
+        self.assertEqual(rows[0]["close_loss_count"], "1")
 
     def test_catboost_example_scaling_preserves_features_and_scales_weight(self) -> None:
         example = PairwiseExample(features={"score_diff": 1.0, "team": "A"}, target=1, weight=0.4)

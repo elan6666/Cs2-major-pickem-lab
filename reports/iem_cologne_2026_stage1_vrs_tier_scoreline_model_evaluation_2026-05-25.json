@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "model": "vrs-tier-scoreline-map-catboost",
+      "pass_probability": 0.7796,
+      "expected_correct": 5.3751,
+      "brier_score": 0.054422031249999996,
+      "log_loss": 0.20849616739513638,
+      "advance_accuracy": 0.90625,
+      "history_events": 2,
+      "history_teams": 32
+    },
+    {
+      "model": "weighted-finetune-latest",
+      "pass_probability": 0.6257,
+      "expected_correct": 4.8778,
+      "brier_score": 0.05032409375000001,
+      "log_loss": 0.20194426123558917,
+      "advance_accuracy": 0.90625,
+      "history_events": 2,
+      "history_teams": 32
+    }
+  ]
+}

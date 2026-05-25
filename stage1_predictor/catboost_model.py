@@ -33,6 +33,34 @@ NUMERIC_FEATURES = (
     "glicko_mean_diff",
     "glicko_uncertainty_diff",
     "glicko_expected",
+    "vrs_tier_map_strength_diff",
+    "vrs_tier_map_smoothed_win_rate_diff",
+    "vrs_tier_map_sample_log_diff",
+    "vrs_tier_map_quality_diff",
+    "vrs_tier_map_round_margin_diff",
+    "vrs_tier_map_overtime_rate_diff",
+    "vrs_tier_map_close_loss_rate_diff",
+    "vrs_top10_map_smoothed_win_rate_diff",
+    "vrs_top20_map_smoothed_win_rate_diff",
+    "vrs_top30_map_smoothed_win_rate_diff",
+    "vrs_top40_map_smoothed_win_rate_diff",
+    "vrs_top50_map_smoothed_win_rate_diff",
+    "vrs_top70_map_smoothed_win_rate_diff",
+    "vrs_top100_map_smoothed_win_rate_diff",
+    "vrs_top10_map_quality_diff",
+    "vrs_top20_map_quality_diff",
+    "vrs_top30_map_quality_diff",
+    "vrs_top40_map_quality_diff",
+    "vrs_top50_map_quality_diff",
+    "vrs_top70_map_quality_diff",
+    "vrs_top100_map_quality_diff",
+    "vrs_top10_map_sample_log_diff",
+    "vrs_top20_map_sample_log_diff",
+    "vrs_top30_map_sample_log_diff",
+    "vrs_top40_map_sample_log_diff",
+    "vrs_top50_map_sample_log_diff",
+    "vrs_top70_map_sample_log_diff",
+    "vrs_top100_map_sample_log_diff",
 )
 
 CATEGORICAL_FEATURES = (
@@ -47,6 +75,39 @@ CATEGORICAL_FEATURES = (
 )
 
 FEATURES = NUMERIC_FEATURES + CATEGORICAL_FEATURES
+
+VRS_TIER_FEATURE_COLUMNS = (
+    "vrs_tier_map_strength",
+    "vrs_tier_map_smoothed_win_rate",
+    "vrs_tier_map_sample_log",
+    "vrs_tier_map_quality",
+    "vrs_tier_map_round_margin",
+    "vrs_tier_map_overtime_rate",
+    "vrs_tier_map_close_loss_rate",
+    "vrs_top10_map_smoothed_win_rate",
+    "vrs_top20_map_smoothed_win_rate",
+    "vrs_top30_map_smoothed_win_rate",
+    "vrs_top40_map_smoothed_win_rate",
+    "vrs_top50_map_smoothed_win_rate",
+    "vrs_top70_map_smoothed_win_rate",
+    "vrs_top100_map_smoothed_win_rate",
+    "vrs_top10_map_quality",
+    "vrs_top20_map_quality",
+    "vrs_top30_map_quality",
+    "vrs_top40_map_quality",
+    "vrs_top50_map_quality",
+    "vrs_top70_map_quality",
+    "vrs_top100_map_quality",
+    "vrs_top10_map_sample_log",
+    "vrs_top20_map_sample_log",
+    "vrs_top30_map_sample_log",
+    "vrs_top40_map_sample_log",
+    "vrs_top50_map_sample_log",
+    "vrs_top70_map_sample_log",
+    "vrs_top100_map_sample_log",
+)
+
+OPTIONAL_NUMERIC_FEATURES = tuple(f"{column}_diff" for column in VRS_TIER_FEATURE_COLUMNS)
 
 
 @dataclass(frozen=True)
@@ -108,7 +169,8 @@ def load_pretrain_examples(path: str | Path) -> list[PairwiseExample]:
     examples: list[PairwiseExample] = []
     with Path(path).open(newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
-        missing = sorted((set(FEATURES) | {"target"}) - set(reader.fieldnames or []))
+        required = (set(FEATURES) - set(OPTIONAL_NUMERIC_FEATURES)) | {"target"}
+        missing = sorted(required - set(reader.fieldnames or []))
         if missing:
             raise ValueError(f"Pretrain match/map CSV is missing columns: {', '.join(missing)}")
         for row in reader:
@@ -173,6 +235,8 @@ def build_pair_features(left: dict[str, str], right: dict[str, str]) -> dict[str
         "overall_factor_rating",
     ):
         features[f"{column}_diff"] = number(left, column, 50.0) - number(right, column, 50.0)
+    for column in VRS_TIER_FEATURE_COLUMNS:
+        features[f"{column}_diff"] = number(left, column, vrs_feature_default(column)) - number(right, column, vrs_feature_default(column))
     features.update(rating_features(left, right))
     return {name: features[name] for name in FEATURES}
 
@@ -246,7 +310,9 @@ def score_teams_with_catboost(
         raise ValueError(f"Feature snapshot is missing teams: {', '.join(missing)}")
     model = CatBoostClassifier()
     model.load_model(str(model_path))
-    cat_indexes = [FEATURES.index(name) for name in CATEGORICAL_FEATURES]
+    feature_names = tuple(metadata.get("features", FEATURES))
+    categorical_names = tuple(metadata.get("categorical_features", CATEGORICAL_FEATURES))
+    cat_indexes = [feature_names.index(name) for name in categorical_names if name in feature_names]
 
     scored: list[Team] = []
     for team in teams:
@@ -255,7 +321,7 @@ def score_teams_with_catboost(
             if team.name == opponent.name:
                 continue
             features = build_pair_features(row_by_team[team.name], row_by_team[opponent.name])
-            matrix = [[features[name] for name in FEATURES]]
+            matrix = [[features.get(name, feature_default(name)) for name in feature_names]]
             probability = model.predict_proba(Pool(matrix, cat_features=cat_indexes))[0][1]
             logits.append(logit(float(probability)))
         average_logit = sum(logits) / len(logits)
@@ -270,6 +336,20 @@ def number(row: dict[str, str], field: str, default: float = 0.0) -> float:
     if value is None or str(value).strip() == "":
         return default
     return float(str(value).strip())
+
+
+def vrs_feature_default(column: str) -> float:
+    if column.endswith("_win_rate") or column.endswith("_strength"):
+        return 50.0
+    return 0.0
+
+
+def feature_default(name: str) -> float | str:
+    if name in CATEGORICAL_FEATURES:
+        return ""
+    if name.endswith("_diff") and name[:-5] in VRS_TIER_FEATURE_COLUMNS:
+        return 0.0
+    return 0.0
 
 
 def logit(value: float) -> float:

@@ -1,0 +1,431 @@
+team,map,win_rate,maps_played,pick_rate,ban_rate,pistol_win_rate,first_kill_round_win_rate,first_death_round_win_rate,source
+100 Thieves,Ancient,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+100 Thieves,Dust2,6.50,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+100 Thieves,Inferno,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+100 Thieves,Mirage,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+100 Thieves,Nuke,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+1win,Ancient,91.94,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+1win,Dust2,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+1win,Overpass,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+3DMAX,Ancient,40.50,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+3DMAX,Anubis,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+3DMAX,Dust2,70.15,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+3DMAX,Inferno,42.60,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+3DMAX,Nuke,70.43,7,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9INE,Ancient,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9INE,Inferno,6.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9INE,Overpass,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9z,Ancient,35.07,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9z,Dust2,11.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9z,Inferno,6.03,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9z,Mirage,90.35,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9z,Nuke,27.10,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+9z,Overpass,65.37,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+AM,Dust2,50.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+AM,Inferno,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+AM,Mirage,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+AM,Nuke,10.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Acend,Ancient,9.15,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Acend,Dust2,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Acend,Inferno,88.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Acend,Mirage,63.33,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Acend,Overpass,49.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Ancient,53.20,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Anubis,90.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Dust2,48.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Inferno,48.40,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Mirage,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Nuke,89.54,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Alliance,Overpass,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Astralis,Ancient,63.87,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Astralis,Dust2,93.10,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Astralis,Inferno,51.15,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Astralis,Mirage,57.76,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Astralis,Nuke,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Astralis,Overpass,78.93,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Aurora,Anubis,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Aurora,Dust2,51.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Aurora,Inferno,95.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Aurora,Mirage,91.90,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Aurora,Nuke,51.20,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Aurora,Overpass,65.47,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Ancient,61.62,18,35.29,1.16,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Anubis,5.00,2,0.00,33.72,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Dust2,57.96,14,2.94,3.49,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Inferno,13.92,8,0.00,19.77,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Mirage,58.07,19,61.76,1.16,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Nuke,34.86,9,0.00,20.93,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+B8,Overpass,38.02,8,0.00,19.77,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BC.Game,Ancient,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BC.Game,Anubis,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BC.Game,Inferno,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BC.Game,Mirage,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BC.Game,Nuke,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BC.Game,Overpass,46.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BESTIA,Ancient,5.00,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BESTIA,Dust2,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BESTIA,Mirage,35.33,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BET-M,Ancient,5.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BET-M,Dust2,6.80,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BET-M,Mirage,95.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BET-M,Nuke,48.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Ancient,68.46,13,27.27,2.67,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Anubis,78.77,5,0.00,17.33,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Dust2,62.38,8,6.06,22.67,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Inferno,95.00,4,12.12,13.33,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Mirage,71.68,11,6.06,16.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Nuke,49.10,4,3.03,26.67,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BIG,Overpass,67.04,18,45.45,1.33,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BetBoom,Ancient,50.74,14,14.71,10.84,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BetBoom,Anubis,63.50,11,11.76,8.43,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BetBoom,Dust2,70.23,10,14.71,13.25,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BetBoom,Mirage,52.67,17,23.53,9.64,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BetBoom,Nuke,62.83,14,29.41,6.02,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+BetBoom,Overpass,45.53,13,5.88,12.05,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Betclic,Ancient,6.85,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Betclic,Anubis,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Betclic,Nuke,6.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Betclic,Overpass,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Bounty Hunters,Ancient,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Bounty Hunters,Anubis,11.59,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Bounty Hunters,Dust2,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Bounty Hunters,Mirage,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Bounty Hunters,Nuke,6.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+CYBERSHOKE,Anubis,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+CYBERSHOKE,Dust2,7.70,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+CYBERSHOKE,Nuke,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+CYBERSHOKE,Overpass,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Chinggis Warriors,Ancient,64.40,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Chinggis Warriors,Dust2,48.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Chinggis Warriors,Inferno,5.00,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Chinggis Warriors,Mirage,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Chinggis Warriors,Nuke,48.20,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ECSTATIC,Ancient,8.09,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ECSTATIC,Inferno,6.53,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ECSTATIC,Mirage,36.12,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ECSTATIC,Nuke,5.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ECSTATIC,Overpass,89.54,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+EYEBALLERS,Anubis,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+EYEBALLERS,Dust2,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+EYEBALLERS,Inferno,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+EYEBALLERS,Mirage,50.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+EYEBALLERS,Nuke,88.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Eternal Fire,Anubis,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Eternal Fire,Dust2,5.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Eternal Fire,Mirage,11.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Eternal Fire,Overpass,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FOKUS,Ancient,50.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FOKUS,Mirage,6.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FOKUS,Nuke,93.55,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FOKUS,Overpass,88.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FURIA,Dust2,38.53,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FURIA,Inferno,95.00,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FURIA,Mirage,50.67,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FURIA,Nuke,50.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FURIA,Overpass,63.87,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FUT,Ancient,70.39,7,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FUT,Anubis,52.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FUT,Dust2,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FUT,Mirage,95.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FUT,Nuke,95.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FUT,Overpass,64.37,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FaZe,Ancient,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FaZe,Anubis,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FaZe,Mirage,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FaZe,Overpass,9.65,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Falcons,Ancient,67.33,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Falcons,Dust2,92.35,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Falcons,Inferno,52.70,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Falcons,Mirage,95.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Fisher College,Ancient,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Fisher College,Mirage,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Fluxo,Anubis,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Fluxo,Inferno,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Fluxo,Nuke,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FlyQuest,Ancient,63.00,3,0.00,30.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FlyQuest,Anubis,95.00,4,60.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FlyQuest,Dust2,59.62,5,26.67,6.67,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FlyQuest,Inferno,89.54,1,6.67,6.67,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FlyQuest,Mirage,33.80,3,0.00,13.33,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+FlyQuest,Nuke,29.50,4,6.67,10.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+G2,Ancient,76.37,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+G2,Anubis,35.40,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+G2,Dust2,95.00,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+G2,Inferno,62.60,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+G2,Mirage,51.73,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+G2,Overpass,67.60,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Ancient,56.15,7,10.00,4.08,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Anubis,9.66,1,0.00,28.57,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Dust2,49.98,10,65.00,2.04,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Inferno,27.70,4,5.00,14.29,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Mirage,7.26,1,0.00,38.78,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Nuke,28.97,10,5.00,8.16,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gaimin Gladiators,Overpass,63.87,3,15.00,4.08,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Galorys,Ancient,90.34,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Galorys,Mirage,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Galorys,Nuke,11.36,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Galorys,Overpass,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Ancient,86.07,8,3.70,8.70,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Anubis,28.05,4,0.00,26.09,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Dust2,7.33,3,0.00,40.58,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Inferno,63.02,14,37.04,2.90,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Mirage,58.04,17,44.44,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Nuke,63.87,11,7.41,10.14,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+GamerLegion,Overpass,50.37,6,7.41,11.59,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gentle Mates,Ancient,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gentle Mates,Inferno,64.68,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gentle Mates,Mirage,65.47,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gentle Mates,Nuke,8.85,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Gentle Mates,Overpass,89.54,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HEROIC,Ancient,43.05,7,0.00,21.13,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HEROIC,Dust2,70.38,17,21.21,2.82,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HEROIC,Inferno,46.50,13,12.12,4.23,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HEROIC,Mirage,33.07,12,18.18,9.86,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HEROIC,Nuke,70.95,14,45.45,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HEROIC,Overpass,51.20,6,3.03,15.49,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HOTU,Ancient,7.25,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HOTU,Anubis,91.94,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HOTU,Dust2,47.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HOTU,Mirage,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HOTU,Nuke,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+HOTU,Overpass,6.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+INFINITE,Dust2,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+INFINITE,Inferno,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Imperial,Inferno,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Imperial,Mirage,33.20,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Imperial,Nuke,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Inner Circle,Ancient,47.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Inner Circle,Dust2,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Inner Circle,Mirage,27.73,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Inner Circle,Overpass,12.36,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+JiJieHao,Ancient,67.48,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+JiJieHao,Anubis,48.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+JiJieHao,Dust2,50.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+JiJieHao,Inferno,94.97,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+JiJieHao,Mirage,88.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Johnny Speeds,Dust2,33.47,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Johnny Speeds,Inferno,8.85,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Johnny Speeds,Mirage,6.85,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Johnny Speeds,Overpass,5.65,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+K27,Ancient,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+K27,Anubis,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+K27,Nuke,92.35,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+K27,Overpass,8.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+KOLESIE,Dust2,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+KOLESIE,Mirage,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+KOLESIE,Nuke,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+KOLESIE,Overpass,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Legacy,Ancient,34.53,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Legacy,Dust2,66.53,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Legacy,Inferno,51.00,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Legacy,Mirage,95.00,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Legacy,Nuke,65.73,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Liquid,Ancient,28.73,14,20.00,6.15,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Liquid,Anubis,38.20,3,4.00,13.85,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Liquid,Dust2,30.55,10,20.00,13.85,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Liquid,Inferno,66.00,9,4.00,12.31,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Liquid,Mirage,54.16,9,36.00,3.08,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Liquid,Nuke,30.86,10,16.00,4.62,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Lynn Vision,Ancient,11.26,1,4.76,2.33,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Lynn Vision,Anubis,8.86,1,0.00,20.93,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Lynn Vision,Dust2,75.49,4,71.43,4.65,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Lynn Vision,Inferno,36.93,3,9.52,6.98,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Lynn Vision,Nuke,51.40,2,9.52,9.30,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Lynn Vision,Overpass,10.46,1,4.76,9.30,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+M80,Ancient,18.33,6,12.00,12.31,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+M80,Anubis,49.87,6,12.00,7.69,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+M80,Dust2,66.82,9,0.00,12.31,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+M80,Inferno,57.37,12,40.00,3.08,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+M80,Mirage,54.00,11,28.00,4.62,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+M80,Overpass,56.15,7,8.00,13.85,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MIBR,Ancient,79.52,15,23.08,5.77,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MIBR,Anubis,95.00,7,11.54,3.85,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MIBR,Inferno,74.49,12,42.31,5.77,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MIBR,Mirage,64.45,11,19.23,5.77,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MIBR,Nuke,50.49,8,3.85,9.62,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MIBR,Overpass,49.60,8,0.00,19.23,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MOUZ,Ancient,72.88,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MOUZ,Dust2,50.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MOUZ,Inferno,36.93,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MOUZ,Mirage,95.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MOUZ,Nuke,92.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+MOUZ,Overpass,95.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Marsborne,Ancient,90.34,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Marsborne,Anubis,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Marsborne,Mirage,6.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Metizport,Inferno,12.02,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Metizport,Mirage,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Monte,Ancient,93.55,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Monte,Anubis,50.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Monte,Dust2,75.11,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Monte,Inferno,48.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Monte,Mirage,8.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Monte,Nuke,72.68,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NEXVOID,Ancient,89.54,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NEXVOID,Dust2,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NEXVOID,Inferno,6.85,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NEXVOID,Overpass,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Ancient,59.28,10,22.73,8.51,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Anubis,9.42,2,4.55,17.02,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Dust2,5.00,7,13.64,25.53,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Inferno,50.30,8,27.27,2.13,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Mirage,71.80,11,31.82,4.26,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Nuke,14.50,8,0.00,21.28,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+NRG,Overpass,5.00,3,0.00,21.28,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Natus Vincere,Ancient,50.79,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Natus Vincere,Anubis,90.34,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Natus Vincere,Dust2,93.54,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Natus Vincere,Inferno,64.93,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Natus Vincere,Mirage,93.53,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Natus Vincere,Nuke,92.30,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemesis,Ancient,63.60,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemesis,Inferno,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemesis,Mirage,48.37,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemesis,Nuke,5.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemiga,Ancient,50.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemiga,Anubis,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemiga,Dust2,88.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemiga,Mirage,95.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemiga,Nuke,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nemiga,Overpass,88.64,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ninjas in Pyjamas,Ancient,34.77,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ninjas in Pyjamas,Anubis,46.63,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ninjas in Pyjamas,Dust2,63.40,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ninjas in Pyjamas,Mirage,18.14,7,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ninjas in Pyjamas,Nuke,66.80,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nuclear TigeRES,Ancient,48.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nuclear TigeRES,Dust2,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Nuclear TigeRES,Nuke,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ODDIK,Ancient,51.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ODDIK,Anubis,6.45,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ODDIK,Inferno,49.60,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ODDIK,Nuke,11.36,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ODDIK,Overpass,7.25,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+OG,Ancient,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+OG,Dust2,12.22,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+OG,Inferno,92.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+OG,Overpass,48.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+PARIVISION,Ancient,49.20,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+PARIVISION,Dust2,34.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+PARIVISION,Inferno,49.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+PARIVISION,Mirage,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Passion UA,Dust2,92.75,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Passion UA,Inferno,92.75,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Passion UA,Mirage,5.00,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Passion UA,Nuke,33.23,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Passion UA,Overpass,40.68,5,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Phantom,Ancient,7.30,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Phantom,Dust2,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Phantom,Mirage,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Phantom,Nuke,88.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Phantom,Overpass,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+RED Canids,Ancient,35.51,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+RED Canids,Inferno,63.78,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+RED Canids,Mirage,6.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+RED Canids,Nuke,50.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Rare Atom,Ancient,34.27,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Rare Atom,Anubis,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Rare Atom,Dust2,11.36,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Rare Atom,Inferno,12.02,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Rare Atom,Mirage,5.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Rare Atom,Overpass,5.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SINNERS,Ancient,63.94,14,2.63,15.09,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SINNERS,Dust2,43.76,16,26.32,6.60,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SINNERS,Inferno,34.68,9,5.26,16.04,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SINNERS,Mirage,70.97,17,39.47,1.89,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SINNERS,Nuke,46.46,13,15.79,5.66,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SINNERS,Overpass,82.97,12,10.53,10.38,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SPARTA,Ancient,12.02,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SPARTA,Mirage,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sangal,Mirage,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sashi,Ancient,91.94,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sashi,Anubis,89.54,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sashi,Dust2,92.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sashi,Mirage,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sashi,Nuke,49.60,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sashi,Overpass,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SemperFi,Ancient,49.16,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SemperFi,Anubis,5.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SemperFi,Dust2,7.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SemperFi,Inferno,49.48,6,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+SemperFi,Mirage,91.94,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sharks,Ancient,37.04,11,15.15,9.52,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sharks,Anubis,94.27,3,9.09,6.35,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sharks,Inferno,50.59,10,30.30,12.70,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sharks,Mirage,43.96,7,3.03,11.11,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sharks,Nuke,74.10,15,42.42,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Sharks,Overpass,38.17,8,0.00,12.70,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ShindeN,Ancient,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ShindeN,Dust2,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ShindeN,Inferno,48.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ShindeN,Mirage,49.20,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ShindeN,Nuke,92.75,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ShindeN,Overpass,50.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Spirit,Ancient,93.55,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Spirit,Anubis,91.94,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Spirit,Dust2,88.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Spirit,Mirage,48.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Spirit,Nuke,90.34,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+THUNDER dOWNUNDER,Ancient,51.28,4,0.00,6.67,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+THUNDER dOWNUNDER,Anubis,93.15,2,25.00,13.33,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+THUNDER dOWNUNDER,Inferno,50.77,4,30.56,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+TYLOO,Ancient,31.36,13,0.00,16.18,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+TYLOO,Anubis,8.86,1,0.00,19.12,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+TYLOO,Inferno,69.06,10,35.48,2.94,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+TYLOO,Mirage,72.94,11,38.71,2.94,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+TYLOO,Nuke,76.93,5,6.45,10.29,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+TYLOO,Overpass,70.40,7,19.35,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The Huns,Ancient,46.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The Huns,Dust2,47.22,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The Huns,Mirage,5.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The Huns,Nuke,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The MongolZ,Ancient,50.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The MongolZ,Mirage,6.80,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+The MongolZ,Nuke,87.98,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Tricked,Mirage,88.64,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Tricked,Nuke,87.87,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ursa,Anubis,50.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ursa,Dust2,90.34,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ursa,Nuke,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Ursa,Overpass,9.66,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Vitality,Anubis,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Vitality,Dust2,91.14,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Vitality,Mirage,95.00,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Vitality,Nuke,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Vitality,Overpass,91.25,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Voca,Ancient,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Voca,Dust2,33.73,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Voca,Inferno,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Voca,Mirage,26.68,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Voca,Overpass,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+WW,Dust2,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+WW,Inferno,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Wildcard,Dust2,11.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Wildcard,Inferno,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Wildcard,Mirage,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Wildcard,Nuke,8.06,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+Wildcard,Overpass,88.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ex-RUBY,Ancient,5.00,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ex-RUBY,Dust2,91.60,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ex-RUBY,Nuke,8.86,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+ex-RUBY,Overpass,11.26,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+fnatic,Ancient,8.05,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+fnatic,Anubis,91.55,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+fnatic,Dust2,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+fnatic,Overpass,5.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+illwill,Anubis,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+illwill,Dust2,90.34,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+illwill,Mirage,5.00,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+illwill,Nuke,51.20,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+illwill,Overpass,10.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+magic,Ancient,90.75,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+magic,Dust2,48.40,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+magic,Inferno,92.74,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+magic,Mirage,27.60,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+magic,Overpass,53.20,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+paiN,Anubis,6.46,1,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+paiN,Dust2,35.20,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+paiN,Inferno,50.80,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+paiN,Mirage,64.93,3,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+paiN,Nuke,50.40,4,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality
+paiN,Overpass,94.35,2,0.00,0.00,,,,BO3 map results adjusted by VRS tier and CS2 scoreline quality

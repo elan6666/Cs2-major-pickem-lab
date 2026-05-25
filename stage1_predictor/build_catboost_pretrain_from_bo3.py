@@ -7,6 +7,7 @@ from pathlib import Path
 from .catboost_model import CATEGORICAL_FEATURES, FEATURES, NUMERIC_FEATURES, build_pair_features
 from .collect_bo3_dataset import normalize_name
 from .factor_snapshot import build_factor_rows
+from .map_veto import normalize_map_name
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -15,6 +16,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--maps", required=True, help="BO3 map rows CSV")
     parser.add_argument("--feature-snapshot", required=True, help="Current Stage 1 factor snapshot for the 16 teams")
     parser.add_argument("--raw-detail-dir", default="data/raw/bo3/match_details")
+    parser.add_argument("--vrs-tier-map-features", help="Optional per-team-per-map VRS tier scoreline feature CSV")
     parser.add_argument("--output", required=True, help="Featureized CatBoost pretrain CSV")
     parser.add_argument("--report", required=True, help="Markdown report")
     parser.add_argument("--sample-weight", type=float, default=0.30)
@@ -30,6 +32,7 @@ def main(argv: list[str] | None = None) -> int:
         map_rows=load_rows(args.maps),
         match_rows=matches,
         snapshot_rows=snapshot_rows,
+        vrs_tier_map_features=load_vrs_tier_map_features(args.vrs_tier_map_features) if args.vrs_tier_map_features else {},
         raw_detail_dir=Path(args.raw_detail_dir),
         sample_weight=args.sample_weight,
         stage_vs_stage_weight=args.stage_vs_stage_weight,
@@ -56,6 +59,14 @@ def load_snapshot_rows(path: str | Path) -> dict[str, dict[str, str]]:
     return {normalize_name(row["team"]): row for row in rows}
 
 
+def load_vrs_tier_map_features(path: str | Path) -> dict[tuple[str, str], dict[str, str]]:
+    return {
+        (normalize_name(row["team"]), normalize_map_name(row["map"])): row
+        for row in load_rows(path)
+        if row.get("team") and row.get("map")
+    }
+
+
 def load_match_index(path: str | Path) -> dict[str, dict[str, str]]:
     rows = load_rows(path)
     output: dict[str, dict[str, str]] = {}
@@ -70,12 +81,14 @@ def build_pretrain_rows(
     map_rows: list[dict[str, str]],
     match_rows: dict[str, dict[str, str]],
     snapshot_rows: dict[str, dict[str, str]],
+    vrs_tier_map_features: dict[tuple[str, str], dict[str, str]] | None = None,
     raw_detail_dir: Path,
     sample_weight: float,
     stage_vs_stage_weight: float,
 ) -> list[dict[str, str]]:
     output: list[dict[str, str]] = []
     skipped = 0
+    vrs_tier_map_features = vrs_tier_map_features or {}
     for map_row in map_rows:
         if map_row.get("status") != "finished":
             continue
@@ -90,8 +103,8 @@ def build_pretrain_rows(
         if target1 is None:
             skipped += 1
             continue
-        left = feature_row_for_team(team1, match, snapshot_rows)
-        right = feature_row_for_team(team2, match, snapshot_rows)
+        left = feature_row_for_team(team1, match, snapshot_rows, map_row, vrs_tier_map_features)
+        right = feature_row_for_team(team2, match, snapshot_rows, map_row, vrs_tier_map_features)
         if not left or not right:
             skipped += 1
             continue
@@ -115,14 +128,22 @@ def map_target(team1: str, team2: str, winner: str) -> int | None:
     return None
 
 
-def feature_row_for_team(team: str, match: dict[str, str], snapshot_rows: dict[str, dict[str, str]]) -> dict[str, str]:
+def feature_row_for_team(
+    team: str,
+    match: dict[str, str],
+    snapshot_rows: dict[str, dict[str, str]],
+    map_row: dict[str, str],
+    vrs_tier_map_features: dict[tuple[str, str], dict[str, str]],
+) -> dict[str, str]:
     key = normalize_name(team)
     if key in snapshot_rows:
-        return dict(snapshot_rows[key])
+        row = dict(snapshot_rows[key])
+        row.update(vrs_tier_map_features.get((key, normalize_map_name(map_row.get("map_name", ""))), {}))
+        return row
     side = side_for_team(team, match)
     rank = match.get(f"{side}_vrs_rank", "") or match.get(f"{side}_rank_bo3", "") or "100"
     points = match.get(f"{side}_vrs_points", "") or fallback_points(rank)
-    return {
+    row = {
         "event_id": "bo3_last4months_pretrain",
         "team": team,
         "seed": rank,
@@ -144,6 +165,8 @@ def feature_row_for_team(team: str, match: dict[str, str], snapshot_rows: dict[s
         "format_type": "bo3_last4months_match_map",
         "round_system": "match_map_pretrain",
     }
+    row.update(vrs_tier_map_features.get((key, normalize_map_name(map_row.get("map_name", ""))), {}))
+    return row
 
 
 def side_for_team(team: str, match: dict[str, str]) -> str:

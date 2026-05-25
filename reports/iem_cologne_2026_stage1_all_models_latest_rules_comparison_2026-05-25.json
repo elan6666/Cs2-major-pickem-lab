@@ -31,6 +31,16 @@
       "expected_correct": 5.4816
     },
     {
+      "model": "vrs-tier-scoreline-map-catboost",
+      "path": "reports/iem_cologne_2026_stage1_prediction_vrs-tier-scoreline-map-catboost_2026-05-25.json",
+      "configured_model": "catboost",
+      "three_zero": "BetBoom, GamerLegion",
+      "zero_three": "Lynn Vision, NRG",
+      "advance": "BIG, MIBR, THUNDER dOWNUNDER, SINNERS, FlyQuest, HEROIC",
+      "pass_probability": 0.7796,
+      "expected_correct": 5.3751
+    },
+    {
       "model": "strict-real-catboost-latest",
       "path": "reports/iem_cologne_2026_stage1_prediction_strict-real-catboost-latest_latest_rules_2026-05-25.json",
       "configured_model": "catboost",
