@@ -19,6 +19,7 @@ def probability_rows(probabilities: list[TeamProbability]) -> list[dict[str, str
                 "p_3_0": format_probability(probs["3-0"]),
                 "p_3_1": format_probability(probs["3-1"]),
                 "p_3_2": format_probability(probs["3-2"]),
+                "p_pickem_advance": format_probability(item.pickem_advance_probability),
                 "p_advance": format_probability(item.advance_probability),
                 "p_2_3": format_probability(probs["2-3"]),
                 "p_1_3": format_probability(probs["1-3"]),
@@ -90,14 +91,14 @@ def render_markdown_report(
             "",
             "## 队伍概率",
             "",
-            f"| 队伍 | 种子 | 分数 | 3-0 | 3-1 | 3-2 | {advance_label} | 2-3 | 1-3 | 0-3 | 最常见战绩 |",
+            f"| 队伍 | 种子 | 分数 | 3-0 | 3-1 | 3-2 | {advance_label} | 总晋级 | 2-3 | 1-3 | 0-3 | 最常见战绩 |",
             "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
         ]
     )
 
     for row in probability_rows(probabilities):
         lines.append(
-            "| {team} | {seed} | {score} | {p_3_0} | {p_3_1} | {p_3_2} | {p_advance} | {p_2_3} | {p_1_3} | {p_0_3} | {most_common_record} |".format(
+            "| {team} | {seed} | {score} | {p_3_0} | {p_3_1} | {p_3_2} | {p_pickem_advance} | {p_advance} | {p_2_3} | {p_1_3} | {p_0_3} | {most_common_record} |".format(
                 **row
             )
         )
@@ -116,6 +117,7 @@ def render_markdown_report(
     else:
         lines.append("- 本次运行没有启用地图 veto 模拟。")
     lines.append("- 瑞士轮配对按 Valve Major 规则处理：首轮种子配对，第 2/3 轮高种子对可用低种子，第 4/5 轮 6 队组使用官方优先配对表，并尽量避免重复交手。")
+    lines.append("- Pick'Em 计分严格按槽位判断：3-0 槽只认 3-0，晋级槽只认 3-1/3-2，0-3 槽只认 0-3。")
     return "\n".join(lines) + "\n"
 
 

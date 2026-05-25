@@ -91,13 +91,33 @@ class Stage1PredictorTests(unittest.TestCase):
     def test_pickem_card_evaluation(self) -> None:
         outcomes = [
             SimulationOutcome(
-                records={},
+                records={
+                    "A": (3, 0),
+                    "B": (3, 1),
+                    "C": (3, 2),
+                    "D": (3, 1),
+                    "E": (3, 2),
+                    "F": (3, 1),
+                    "G": (3, 2),
+                    "H": (3, 1),
+                    "P": (0, 3),
+                },
                 advanced=frozenset({"A", "B", "C", "D", "E", "F", "G", "H"}),
                 three_zero=frozenset({"A"}),
                 zero_three=frozenset({"P"}),
             ),
             SimulationOutcome(
-                records={},
+                records={
+                    "B": (3, 0),
+                    "C": (3, 1),
+                    "D": (3, 2),
+                    "E": (3, 1),
+                    "F": (3, 2),
+                    "G": (3, 1),
+                    "H": (3, 2),
+                    "I": (3, 1),
+                    "Q": (0, 3),
+                },
                 advanced=frozenset({"B", "C", "D", "E", "F", "G", "H", "I"}),
                 three_zero=frozenset({"B"}),
                 zero_three=frozenset({"Q"}),
@@ -108,10 +128,28 @@ class Stage1PredictorTests(unittest.TestCase):
             three_zero=("A",),
             zero_three=("P",),
             advance=("B", "C", "D", "E", "F", "G"),
-            pass_threshold=5,
+            pass_threshold=6,
         )
-        self.assertEqual(card.pass_probability, 1.0)
-        self.assertEqual(card.expected_correct, 7.0)
+        self.assertEqual(card.pass_probability, 0.5)
+        self.assertEqual(card.expected_correct, 6.5)
+
+    def test_pickem_advance_slot_excludes_three_zero(self) -> None:
+        outcomes = [
+            SimulationOutcome(
+                records={"A": (3, 0), "B": (3, 1), "C": (3, 2), "Z": (0, 3)},
+                advanced=frozenset({"A", "B", "C"}),
+                three_zero=frozenset({"A"}),
+                zero_three=frozenset({"Z"}),
+            )
+        ]
+        card = evaluate_card(
+            outcomes,
+            three_zero=(),
+            zero_three=(),
+            advance=("A", "B", "C"),
+            pass_threshold=1,
+        )
+        self.assertEqual(card.expected_correct, 2.0)
 
     def test_default_pickem_recommendation_uses_two_two_six_card(self) -> None:
         outcomes = run_simulations(sample_teams(), 100, 13, SimulationConfig())
@@ -491,8 +529,8 @@ class Stage1PredictorTests(unittest.TestCase):
         self.assertLess(abs(scoreline_quality(14, 16)), 0.2)
         rows = build_team_map_rows(
             [
-                Observation("Team A", "Ancient", 8, True, 10, scoreline_quality(13, 3), False, False, None),
-                Observation("Team A", "Ancient", 18, False, -2, scoreline_quality(14, 16), True, True, None),
+                Observation("Team A", "Ancient", 5, 8, True, 10, 7.0, scoreline_quality(13, 3), False, False, None, "test"),
+                Observation("Team A", "Ancient", 20, 18, False, -2, -2.2, scoreline_quality(14, 16), True, True, None, "test"),
             ]
         )
         self.assertEqual(len(rows), 1)
@@ -503,6 +541,7 @@ class Stage1PredictorTests(unittest.TestCase):
         self.assertIn("vrs_opponent_adjusted_scoreline_quality", rows[0])
         self.assertIn("vrs_map_win_sample_confidence", rows[0])
         self.assertIn("vrs_weak_opponent_close_penalty", rows[0])
+        self.assertIn("vrs_expected_margin_residual", rows[0])
 
     def test_catboost_example_scaling_preserves_features_and_scales_weight(self) -> None:
         example = PairwiseExample(features={"score_diff": 1.0, "team": "A"}, target=1, weight=0.4)

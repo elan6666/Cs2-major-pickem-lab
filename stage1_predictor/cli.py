@@ -31,7 +31,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--feature-snapshot", help="Optional feature snapshot for feature-score model")
     parser.add_argument("--score-column", default="feature_score", help="Score column for feature-score model")
     parser.add_argument("--stage-name", default="Stage 1", help="Report label for the Swiss stage")
-    parser.add_argument("--advance-label", default="晋级", help="Report label for reaching the next phase")
+    parser.add_argument("--advance-label", default="晋级(3-1/3-2)", help="Report label for the non-3-0 advance Pick'Em slot")
     parser.add_argument("--simulations", type=int, default=50000)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--scale", type=float, default=120.0)

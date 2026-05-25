@@ -58,6 +58,10 @@ class TeamProbability:
         )
 
     @property
+    def pickem_advance_probability(self) -> float:
+        return self.record_probabilities.get("3-1", 0.0) + self.record_probabilities.get("3-2", 0.0)
+
+    @property
     def most_common_record(self) -> str:
         return max(self.record_probabilities.items(), key=lambda item: item[1])[0]
 

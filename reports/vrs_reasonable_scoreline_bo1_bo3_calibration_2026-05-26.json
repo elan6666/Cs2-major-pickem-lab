@@ -1,0 +1,65 @@
+{
+  "model": "vrs-reasonable-scoreline-map-catboost-calibrated",
+  "score_column": "score",
+  "model_json": "reports/models/bo3_stage1_catboost_vrs_reasonable_scoreline_weighted_finetune_2026-05-26.json",
+  "model_score_scale": 120.0,
+  "event_ids": [
+    "blast_austin_major_2025_stage1",
+    "starladder_budapest_major_2025_stage1"
+  ],
+  "simulations": 800,
+  "seed": 20260526,
+  "objective_weights": {
+    "advanced": 0.5,
+    "went_3_0": 0.25,
+    "went_0_3": 0.25
+  },
+  "candidate_count": 80,
+  "parameters": {
+    "scale": 105.0,
+    "bo1_shrink": 0.7,
+    "bo3_shrink": 1.0,
+    "veto_weight": 1.0
+  },
+  "training_metrics": {
+    "objective": 0.19645696460585424,
+    "brier": 0.05418312988281251,
+    "advanced_log_loss": 0.18165698611075703,
+    "went_3_0_log_loss": 0.2300963225578048,
+    "went_0_3_log_loss": 0.19241756364409807,
+    "advanced_brier": 0.04196298828125001,
+    "went_3_0_brier": 0.07303769531250001,
+    "went_0_3_brier": 0.05976884765625
+  },
+  "backtest_folds": [
+    {
+      "test_event_id": "blast_austin_major_2025_stage1",
+      "selected_parameters": {
+        "scale": 105.0,
+        "bo1_shrink": 0.7,
+        "bo3_shrink": 1.0,
+        "veto_weight": 1.0
+      },
+      "train_objective": 0.21098222071898665,
+      "test_objective": 0.17793924106802883,
+      "test_brier": 0.04668212890625001
+    },
+    {
+      "test_event_id": "starladder_budapest_major_2025_stage1",
+      "selected_parameters": {
+        "scale": 105.0,
+        "bo1_shrink": 0.7,
+        "bo3_shrink": 1.0,
+        "veto_weight": 1.0
+      },
+      "train_objective": 0.1767284937877783,
+      "test_objective": 0.21347174695873014,
+      "test_brier": 0.06192773437499999
+    }
+  ],
+  "limitations": [
+    "Only two new-format Stage 1 events are available.",
+    "Historical map veto stats are not complete, so veto_weight is fixed unless explicitly provided in the grid.",
+    "Use as a small calibration layer, not as proof that factor-veto is fully trained."
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "models": [
+    {
+      "model": "vrs-reasonable",
+      "path": "reports/iem_cologne_2026_stage1_prediction_vrs_reasonable_strict_pickem_2026-05-26.json",
+      "configured_model": "catboost",
+      "three_zero": "BIG, BetBoom",
+      "zero_three": "Lynn Vision, NRG",
+      "advance": "MIBR, THUNDER dOWNUNDER, SINNERS, HEROIC, GamerLegion, Sharks",
+      "pass_probability": 0.6163,
+      "expected_correct": 4.8948
+    },
+    {
+      "model": "vrs",
+      "path": "reports/iem_cologne_2026_stage1_prediction_vrs_strict_pickem_2026-05-26.json",
+      "configured_model": "vrs",
+      "three_zero": "GamerLegion, B8",
+      "zero_three": "FlyQuest, THUNDER dOWNUNDER",
+      "advance": "BetBoom, BIG, HEROIC, MIBR, M80, SINNERS",
+      "pass_probability": 0.4944,
+      "expected_correct": 4.5289
+    },
+    {
+      "model": "hltv-feature",
+      "path": "reports/iem_cologne_2026_stage1_prediction_hltv_feature_strict_pickem_2026-05-26.json",
+      "configured_model": "feature-score",
+      "three_zero": "GamerLegion, B8",
+      "zero_three": "FlyQuest, THUNDER dOWNUNDER",
+      "advance": "BetBoom, BIG, HEROIC, M80, MIBR, SINNERS",
+      "pass_probability": 0.4706,
+      "expected_correct": 4.4398
+    },
+    {
+      "model": "vrs-tier",
+      "path": "reports/iem_cologne_2026_stage1_prediction_vrs_tier_strict_pickem_2026-05-26.json",
+      "configured_model": "catboost",
+      "three_zero": "BIG, BetBoom",
+      "zero_three": "Lynn Vision, NRG",
+      "advance": "MIBR, THUNDER dOWNUNDER, SINNERS, FlyQuest, HEROIC, GamerLegion",
+      "pass_probability": 0.45,
+      "expected_correct": 4.3296
+    },
+    {
+      "model": "strict-real-catboost",
+      "path": "reports/iem_cologne_2026_stage1_prediction_strict_real_catboost_strict_pickem_2026-05-26.json",
+      "configured_model": "catboost",
+      "three_zero": "HEROIC, BetBoom",
+      "zero_three": "Lynn Vision, Sharks",
+      "advance": "B8, FlyQuest, TYLOO, M80, MIBR, GamerLegion",
+      "pass_probability": 0.4471,
+      "expected_correct": 4.3199
+    },
+    {
+      "model": "vrs-interaction",
+      "path": "reports/iem_cologne_2026_stage1_prediction_vrs_interaction_strict_pickem_2026-05-26.json",
+      "configured_model": "catboost",
+      "three_zero": "BIG, BetBoom",
+      "zero_three": "Lynn Vision, Gaimin Gladiators",
+      "advance": "MIBR, THUNDER dOWNUNDER, SINNERS, HEROIC, Sharks, FlyQuest",
+      "pass_probability": 0.4416,
+      "expected_correct": 4.2946
+    },
+    {
+      "model": "logistic",
+      "path": "reports/iem_cologne_2026_stage1_prediction_logistic_strict_pickem_2026-05-26.json",
+      "configured_model": "logistic",
+      "three_zero": "GamerLegion, B8",
+      "zero_three": "FlyQuest, Lynn Vision",
+      "advance": "BIG, BetBoom, HEROIC, SINNERS, MIBR, M80",
+      "pass_probability": 0.3762,
+      "expected_correct": 4.0854
+    },
+    {
+      "model": "weighted-finetune",
+      "path": "reports/iem_cologne_2026_stage1_prediction_weighted_finetune_strict_pickem_2026-05-26.json",
+      "configured_model": "catboost",
+      "three_zero": "GamerLegion, BIG",
+      "zero_three": "Lynn Vision, Liquid",
+      "advance": "BetBoom, HEROIC, B8, SINNERS, MIBR, M80",
+      "pass_probability": 0.3074,
+      "expected_correct": 3.8074
+    },
+    {
+      "model": "factor-score",
+      "path": "reports/iem_cologne_2026_stage1_prediction_factor_score_strict_pickem_2026-05-26.json",
+      "configured_model": "factor-score",
+      "three_zero": "M80, BetBoom",
+      "zero_three": "FlyQuest, Lynn Vision",
+      "advance": "B8, GamerLegion, BIG, HEROIC, MIBR, SINNERS",
+      "pass_probability": 0.2887,
+      "expected_correct": 3.738
+    },
+    {
+      "model": "factor-weight",
+      "path": "reports/iem_cologne_2026_stage1_prediction_factor_weight_strict_pickem_2026-05-26.json",
+      "configured_model": "factor-score",
+      "three_zero": "M80, BetBoom",
+      "zero_three": "FlyQuest, Lynn Vision",
+      "advance": "B8, GamerLegion, BIG, HEROIC, MIBR, SINNERS",
+      "pass_probability": 0.2869,
+      "expected_correct": 3.7246
+    },
+    {
+      "model": "bo3-catboost-shallow",
+      "path": "reports/iem_cologne_2026_stage1_prediction_bo3_catboost_shallow_strict_pickem_2026-05-26.json",
+      "configured_model": "catboost",
+      "three_zero": "GamerLegion, BIG",
+      "zero_three": "Lynn Vision, Liquid",
+      "advance": "BetBoom, B8, HEROIC, SINNERS, MIBR, M80",
+      "pass_probability": 0.2861,
+      "expected_correct": 3.7298
+    }
+  ]
+}

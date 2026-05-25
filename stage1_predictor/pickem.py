@@ -63,7 +63,7 @@ def recommend_pickem_card(
             by_name[name].advance_probability,
         ),
     )[: config.zero_three_pool]
-    advance_pool = sorted(names, key=lambda name: -by_name[name].advance_probability)[: config.advance_pool]
+    advance_pool = sorted(names, key=lambda name: -by_name[name].pickem_advance_probability)[: config.advance_pool]
 
     best: PickemCard | None = None
     for three_zero in combinations(three_zero_pool, config.three_zero_picks):
@@ -78,7 +78,7 @@ def recommend_pickem_card(
                 eligible_advance = [name for name in names if name not in special_picks]
                 eligible_advance = sorted(
                     eligible_advance,
-                    key=lambda name: -by_name[name].advance_probability,
+                    key=lambda name: -by_name[name].pickem_advance_probability,
                 )[: max(config.advance_picks, config.advance_pool)]
 
             for advance in combinations(eligible_advance, config.advance_picks):
@@ -120,7 +120,8 @@ def evaluate_card(
         correct = 0
         correct += len(three_zero_set & set(outcome.three_zero))
         correct += len(zero_three_set & set(outcome.zero_three))
-        correct += len(advance_set & set(outcome.advanced))
+        pickem_advanced = {team for team, record in outcome.records.items() if record in {(3, 1), (3, 2)}}
+        correct += len(advance_set & pickem_advanced)
         total_correct += correct
         if correct >= pass_threshold:
             passed += 1

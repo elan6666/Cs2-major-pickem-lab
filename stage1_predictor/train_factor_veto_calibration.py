@@ -13,6 +13,7 @@ from .models import Team
 from .pickem import summarize_probabilities
 from .snapshots import validate_snapshot
 from .swiss import SimulationConfig, run_simulations
+from .catboost_model import score_teams_with_catboost
 
 
 TARGET_WEIGHTS = {"advanced": 0.50, "went_3_0": 0.25, "went_0_3": 0.25}
@@ -33,7 +34,13 @@ class CalibrationEvent:
     labels: dict[str, dict[str, int]]
 
 
-def load_events(snapshot_paths: list[str], label_paths: list[str], score_column: str) -> list[CalibrationEvent]:
+def load_events(
+    snapshot_paths: list[str],
+    label_paths: list[str],
+    score_column: str,
+    model_json: str | None = None,
+    model_score_scale: float = 120.0,
+) -> list[CalibrationEvent]:
     labels_by_event: dict[str, dict[str, dict[str, int]]] = {}
     for label_path in label_paths:
         result = validate_labels(label_path)
@@ -67,6 +74,8 @@ def load_events(snapshot_paths: list[str], label_paths: list[str], score_column:
             )
             for row in rows
         ]
+        if model_json:
+            teams = score_teams_with_catboost(teams, snapshot_path, model_json, model_score_scale)
         validate_teams(teams)
 
         labels = labels_by_event.get(event_id)
@@ -180,9 +189,9 @@ def render_report(payload: dict[str, object]) -> str:
     params = payload["parameters"]  # type: ignore[assignment]
     metrics = payload["training_metrics"]  # type: ignore[assignment]
     lines = [
-        "# Factor-Veto 校准报告",
+        "# Stage 1 BO1/BO3 校准报告",
         "",
-        "这份报告用历史 Stage 1 样本微调 `factor-veto` 的全局概率校准层；它不改可解释因子权重，也不改 ban/pick 规则本身。",
+        "这份报告用历史 Stage 1 样本微调全局概率校准层；重点是分别选择 BO1 和 BO3 的收缩参数，避免把两种赛制当成同一种不确定性。",
         "",
         "## 最终参数",
         "",
@@ -257,6 +266,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--snapshots", nargs="+", required=True, help="Historical pre-event snapshot CSV paths")
     parser.add_argument("--labels", nargs="+", required=True, help="Historical Stage 1 label CSV paths")
     parser.add_argument("--score-column", default="score", help="Snapshot score column used during calibration")
+    parser.add_argument("--model-json", help="Optional CatBoost model JSON; if set, score historical snapshots with this model before tuning")
+    parser.add_argument("--model-score-scale", type=float, default=120.0)
+    parser.add_argument("--model-name", default="factor-veto-calibrated")
     parser.add_argument("--output-json", required=True, help="Output calibration JSON")
     parser.add_argument("--report", required=True, help="Output Markdown report")
     parser.add_argument("--simulations", type=int, default=2500)
@@ -270,7 +282,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    events = load_events(args.snapshots, args.labels, args.score_column)
+    events = load_events(args.snapshots, args.labels, args.score_column, args.model_json, args.model_score_scale)
     candidates = build_candidates(
         parse_float_list(args.scales),
         parse_float_list(args.bo1_shrinks),
@@ -279,8 +291,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     best, metrics = tune_candidates(candidates, events, args.simulations, args.seed)
     payload: dict[str, object] = {
-        "model": "factor-veto-calibrated",
+        "model": args.model_name,
         "score_column": args.score_column,
+        "model_json": args.model_json or "",
+        "model_score_scale": args.model_score_scale,
         "event_ids": [event.event_id for event in events],
         "simulations": args.simulations,
         "seed": args.seed,

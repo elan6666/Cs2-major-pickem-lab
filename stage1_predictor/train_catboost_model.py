@@ -25,6 +25,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--pretrain-weight-scale", type=float, default=1.0)
     parser.add_argument("--major-weight-scale", type=float, default=1.0)
     parser.add_argument("--training-mode-name", default="")
+    parser.add_argument("--use-directional-constraints", action="store_true", help="Constrain directional numeric features to match domain priors")
     return parser
 
 
@@ -59,6 +60,7 @@ def main(argv: list[str] | None = None) -> int:
         depth=args.depth,
         learning_rate=args.learning_rate,
         l2_leaf_reg=args.l2_leaf_reg,
+        use_directional_constraints=args.use_directional_constraints,
     )
     metadata.update(
         {

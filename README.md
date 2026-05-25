@@ -10,7 +10,7 @@ Description: CS2 Major Pick'Em simulator with weighted CatBoost finetuning, map 
 Topics: cs2, counter-strike, pickem, major, esports, swiss-system, catboost, map-veto, monte-carlo, prediction-model
 ```
 
-中文一句话：这是一个可复现的 CS2 Major Pick'Em 研究工具，主模型使用近 4 个月 BO3 数据预训练、Austin/Budapest Major 加权校准、两层 ban/pick 策略和 Valve/majors.im 风格瑞士轮模拟。
+中文一句话：这是一个可复现的 CS2 Major Pick'Em 研究工具，主模型使用近 4 个月 BO3 数据预训练、Austin/Budapest Major 加权校准、按比赛日期匹配的 V社排名、比分质量残差、两层 ban/pick 策略和 Valve/majors.im 风格瑞士轮模拟。
 
 默认 Stage 1 Pick'Em 规则：
 
@@ -23,32 +23,37 @@ Topics: cs2, counter-strike, pickem, major, esports, swiss-system, catboost, map
 
 ## 当前主模型
 
-当前 README 以 `vrs-tier-scoreline-map-catboost` 作为主模型。它是在 `weighted-finetune-latest` 链路上加入 V社排名分层地图胜率和 CS2 比分质量后的增强版本：
+当前 README 以 `vrs-reasonable-scoreline-map-catboost` 作为主模型。它是在 `vrs-tier-scoreline-map-catboost` 链路上继续增强合理性后的版本：每场历史 BO3 按比赛日期使用当时或最近一期 V社排名，比分不只看净胜回合，而是看实际分差相对预期分差的残差，并加入方向约束、BO1/BO3 单独校准、不确定性分层和队伍解释卡。
 
 ```text
 近 4 个月 16 支队伍 vs VRS Top 100 的 BO3 match/map 数据
 -> Austin 2025 Stage 1 + Budapest 2025 Stage 1 加权校准
 -> Glicko 风格实力/不确定性特征
 -> CatBoost 两两对比模型
+-> 按比赛日期匹配 V社排名快照
 -> V社排名 top10/20/30/40/50/70/100 分层地图强度
--> MR12/加时感知比分质量、净胜回合、惜败信号
+-> MR12/加时感知比分质量、预期分差残差、惜败信号
+-> 关键特征方向约束
+-> BO1 / BO3 分别校准
 -> 近期 BO3 ban/pick 基础倾向 + Major ban/pick 修正
 -> Valve/majors.im 风格 16 队瑞士轮模拟
--> Pick'Em 通过率优化
+-> 严格 Pick'Em 槽位通过率优化
 ```
 
-最新同口径结果：
+最新严格 Pick'Em 口径结果：
 
 ```text
-vrs-tier-scoreline-map-catboost
-通过率：78.0%
-期望猜中：5.38
-3-0：BetBoom, GamerLegion
+vrs-reasonable-scoreline-map-catboost
+通过率：61.6%
+期望猜中：4.89
+3-0：BIG, BetBoom
 0-3：Lynn Vision, NRG
-晋级：BIG, MIBR, THUNDER dOWNUNDER, SINNERS, FlyQuest, HEROIC
+晋级(3-1/3-2)：MIBR, THUNDER dOWNUNDER, SINNERS, HEROIC, GamerLegion, Sharks
 ```
 
-扩展模型：`weighted-finetune-latest` 保留为上一代主模型对照；`vrs-complete-veto` 保留为保守 VRS 基线扩展。主模型历史 Austin/Budapest 晋级评估为 Brier 0.0544、对数损失 0.2085、晋级命中率 90.6%。
+主模型反过拟合评估：Austin 2025 Stage 1 为 77.8% 通过、5.79 期望猜中、Brier 0.0439、对数损失 0.1855、晋级命中率 100.0%；Budapest 2025 Stage 1 为 72.6% 通过、5.45 期望猜中、Brier 0.0392、对数损失 0.1735、晋级命中率 100.0%；合并 Brier 0.0415、对数损失 0.1795。
+
+扩展模型：`vrs-tier-scoreline-map-catboost` 保留为上一代主模型对照；`weighted-finetune-latest` 保留为基础加权微调对照；`vrs-complete-veto` / `vrs-latest` 保留为保守 VRS 基线扩展。
 
 ## 环境
 
@@ -128,13 +133,13 @@ python3 -m stage1_predictor.cli \
   --json reports/iem_cologne_2026_stage1_prediction_vrs_complete_veto_2026-05-25.json
 ```
 
-当前最新同口径重跑中，VRS 的最新版为 `vrs-latest`，使用两层 ban/pick 策略，结果为 81.0% 通过、5.54 期望猜中；`vrs-complete-veto` 保留为命名扩展产物和历史对照。
+最新严格 Pick'Em 口径下，VRS 基线最新版为 `vrs`，使用两层 ban/pick 策略，结果为 49.4% 通过、4.53 期望猜中；`vrs-complete-veto` 保留为命名扩展产物和历史对照。
 
-## 当前主模型：vrs-tier-scoreline-map-catboost
+## 当前主模型：vrs-reasonable-scoreline-map-catboost
 
-这版模型把每支队伍每张图按对手 V社排名拆开：累计层使用前10、前20、前30、前40、前50、前70、前100；诊断层保留 1-10、11-20、21-30、31-40、41-50、51-70、71-100。每个队伍-地图行包含出场数、胜场、原始胜率、贝叶斯平滑胜率、平均净胜回合、平均比分质量、加时次数和惜败次数。
+这版模型把每支队伍每张图按对手 V社排名拆开：累计层使用前10、前20、前30、前40、前50、前70、前100；诊断层保留 1-10、11-20、21-30、31-40、41-50、51-70、71-100。每个队伍-地图行包含出场数、胜场、原始胜率、贝叶斯平滑胜率、平均净胜回合、平均比分质量、预期分差残差、加时次数和惜败次数。
 
-比分质量按 CS2 MR12 与加时处理：13:3 是强负面，11:13 是小负面，14:16 / 16:14 这种加时图接近中性小幅度信号。小样本分层胜率会往队伍该图整体水平和全局地图基线回拉，避免一场爆冷或刷弱队直接支配模型。
+比分质量按 CS2 MR12 与加时处理：13:3 是强负面，11:13 是小负面，14:16 / 16:14 这种加时图接近中性小幅度信号。预期分差残差会先根据双方当时 V社排名估计本来应该赢多少，再和实际比分相减，所以弱队小胜不一定加分，强队惜败也不一定重罚。小样本分层胜率会往队伍该图整体水平和全局地图基线回拉，避免一场爆冷或刷弱队直接支配模型。
 
 ```bash
 python3 -m stage1_predictor.build_vrs_tier_map_features \
@@ -142,56 +147,58 @@ python3 -m stage1_predictor.build_vrs_tier_map_features \
   --maps data/bo3/bo3_stage1_last4months_maps_complete_2026-05-25.csv \
   --feature-snapshot data/snapshots/iem_cologne_major_2026_stage1_factor_weights_trained_2026-05-25.csv \
   --base-map-stats data/bo3/bo3_stage1_last4months_map_stats_complete_2026-05-25.csv \
-  --team-map-output data/bo3/bo3_stage1_last4months_vrs_tier_scoreline_map_features_2026-05-25.csv \
-  --snapshot-output data/snapshots/iem_cologne_major_2026_stage1_vrs_tier_scoreline_features_2026-05-25.csv \
-  --map-stats-output data/bo3/bo3_stage1_last4months_vrs_tier_scoreline_map_stats_2026-05-25.csv \
-  --report reports/vrs_tier_scoreline_map_features_2026-05-25.md
+  --vrs-standings-dir data/vrs \
+  --team-map-output data/bo3/bo3_stage1_last4months_vrs_reasonable_scoreline_map_features_2026-05-26.csv \
+  --snapshot-output data/snapshots/iem_cologne_major_2026_stage1_vrs_reasonable_scoreline_features_2026-05-26.csv \
+  --map-stats-output data/bo3/bo3_stage1_last4months_vrs_reasonable_scoreline_map_stats_2026-05-26.csv \
+  --report reports/vrs_reasonable_scoreline_map_features_2026-05-26.md
 ```
 
 ```bash
 python3 -m stage1_predictor.build_catboost_pretrain_from_bo3 \
   --matches data/bo3/bo3_stage1_last4months_matches_complete_2026-05-25.csv \
   --maps data/bo3/bo3_stage1_last4months_maps_complete_2026-05-25.csv \
-  --feature-snapshot data/snapshots/iem_cologne_major_2026_stage1_vrs_tier_scoreline_features_2026-05-25.csv \
-  --vrs-tier-map-features data/bo3/bo3_stage1_last4months_vrs_tier_scoreline_map_features_2026-05-25.csv \
-  --output data/bo3/bo3_stage1_last4months_catboost_vrs_tier_scoreline_pretrain_2026-05-25.csv \
-  --report reports/bo3_stage1_last4months_catboost_vrs_tier_scoreline_pretrain_2026-05-25.md
+  --feature-snapshot data/snapshots/iem_cologne_major_2026_stage1_vrs_reasonable_scoreline_features_2026-05-26.csv \
+  --vrs-tier-map-features data/bo3/bo3_stage1_last4months_vrs_reasonable_scoreline_map_features_2026-05-26.csv \
+  --output data/bo3/bo3_stage1_last4months_catboost_vrs_reasonable_scoreline_pretrain_2026-05-26.csv \
+  --report reports/bo3_stage1_last4months_catboost_vrs_reasonable_scoreline_pretrain_2026-05-26.md
 ```
 
 ```bash
 python3 -m stage1_predictor.train_catboost_model \
-  --pretrain-matches data/bo3/bo3_stage1_last4months_catboost_vrs_tier_scoreline_pretrain_2026-05-25.csv \
+  --pretrain-matches data/bo3/bo3_stage1_last4months_catboost_vrs_reasonable_scoreline_pretrain_2026-05-26.csv \
   --require-real-pretrain \
   --snapshots data/snapshots/blast_austin_major_2025_stage1_2025-06-02.csv data/snapshots/starladder_budapest_major_2025_stage1_2025-10-06.csv \
   --labels data/labels/blast_austin_2025_stage1_labels.csv data/labels/starladder_budapest_2025_stage1_labels.csv \
   --pretrain-weight-scale 1.0 \
   --major-weight-scale 2.5 \
-  --training-mode-name austin_budapest_major_calibration_weighted_pairwise_with_vrs_tier_scoreline_features \
+  --training-mode-name austin_budapest_major_calibration_weighted_pairwise_with_vrs_reasonable_scoreline_features \
   --iterations 300 \
   --depth 4 \
   --learning-rate 0.035 \
   --l2-leaf-reg 10.0 \
-  --model-output reports/models/bo3_stage1_catboost_vrs_tier_scoreline_weighted_finetune_2026-05-25.cbm \
-  --metadata-json reports/models/bo3_stage1_catboost_vrs_tier_scoreline_weighted_finetune_2026-05-25.json \
-  --report reports/bo3_stage1_catboost_vrs_tier_scoreline_training_2026-05-25.md
+  --use-directional-constraints \
+  --model-output reports/models/bo3_stage1_catboost_vrs_reasonable_scoreline_weighted_finetune_2026-05-26.cbm \
+  --metadata-json reports/models/bo3_stage1_catboost_vrs_reasonable_scoreline_weighted_finetune_2026-05-26.json \
+  --report reports/bo3_stage1_catboost_vrs_reasonable_scoreline_training_2026-05-26.md
 ```
 
 ```bash
 python3 -m stage1_predictor.cli \
   --teams data/iem_cologne_2026_stage1_teams.csv \
   --model catboost \
-  --model-json reports/models/bo3_stage1_catboost_vrs_tier_scoreline_weighted_finetune_2026-05-25.json \
-  --feature-snapshot data/snapshots/iem_cologne_major_2026_stage1_vrs_tier_scoreline_features_2026-05-25.csv \
-  --calibration-json reports/stage1_factor_veto_calibration.json \
-  --map-stats data/bo3/bo3_stage1_last4months_vrs_tier_scoreline_map_stats_2026-05-25.csv \
+  --model-json reports/models/bo3_stage1_catboost_vrs_reasonable_scoreline_weighted_finetune_2026-05-26.json \
+  --feature-snapshot data/snapshots/iem_cologne_major_2026_stage1_vrs_reasonable_scoreline_features_2026-05-26.csv \
+  --calibration-json reports/vrs_reasonable_scoreline_bo1_bo3_calibration_2026-05-26.json \
+  --map-stats data/bo3/bo3_stage1_last4months_vrs_reasonable_scoreline_map_stats_2026-05-26.csv \
   --map-pool Ancient,Anubis,Dust2,Inferno,Mirage,Nuke,Overpass \
   --veto-policy contextual-bandit \
   --bandit-policy-json reports/models/bo3_two_layer_veto_bandit_policy_2026-05-25.json \
   --simulations 10000 \
   --seed 42 \
-  --report reports/iem_cologne_2026_stage1_prediction_vrs-tier-scoreline-map-catboost_2026-05-25.md \
-  --csv reports/iem_cologne_2026_stage1_prediction_vrs-tier-scoreline-map-catboost_2026-05-25.csv \
-  --json reports/iem_cologne_2026_stage1_prediction_vrs-tier-scoreline-map-catboost_2026-05-25.json
+  --report reports/iem_cologne_2026_stage1_prediction_vrs_reasonable_strict_pickem_2026-05-26.md \
+  --csv reports/iem_cologne_2026_stage1_prediction_vrs_reasonable_strict_pickem_2026-05-26.csv \
+  --json reports/iem_cologne_2026_stage1_prediction_vrs_reasonable_strict_pickem_2026-05-26.json
 ```
 
 ## 可用模型
@@ -442,12 +449,12 @@ python3 -m stage1_predictor.cli \
 
 ```bash
 python3 -m stage1_predictor.radar_chart \
-  --snapshot data/snapshots/iem_cologne_major_2026_stage1_vrs_tier_scoreline_features_2026-05-25.csv \
-  --output reports/figures/iem_cologne_2026_stage1_vrs_tier_scoreline_radar_2026-05-25.svg \
+  --snapshot data/snapshots/iem_cologne_major_2026_stage1_vrs_reasonable_scoreline_features_2026-05-26.csv \
+  --output reports/figures/iem_cologne_2026_stage1_vrs_reasonable_scoreline_radar_2026-05-26.svg \
   --columns 4 \
   --team-png-dir reports/figures/teams \
-  --prediction-json reports/iem_cologne_2026_stage1_prediction_vrs-tier-scoreline-map-catboost_2026-05-25.json \
-  --model-name vrs-tier-scoreline-map-catboost
+  --prediction-json reports/iem_cologne_2026_stage1_prediction_vrs_reasonable_strict_pickem_2026-05-26.json \
+  --model-name vrs-reasonable-scoreline-map-catboost
 ```
 
 Notebook：
@@ -459,11 +466,11 @@ notebooks/iem_cologne_2026_stage1_factor_radar.ipynb
 输出图：
 
 ```text
-reports/figures/iem_cologne_2026_stage1_vrs_tier_scoreline_radar_2026-05-25.svg
+reports/figures/iem_cologne_2026_stage1_vrs_reasonable_scoreline_radar_2026-05-26.svg
 reports/figures/teams/*.png
 ```
 
-每队 PNG 雷达图使用 2026-05-25 V社排名分层 + 比分质量增强快照，并在图内标注当前主模型 `vrs-tier-scoreline-map-catboost` 的晋级概率、3-0 概率、0-3 概率和最常见战绩。
+每队 PNG 雷达图使用 2026-05-26 V社排名分层 + 比分质量残差增强快照，并在图内标注当前主模型 `vrs-reasonable-scoreline-map-catboost` 的晋级概率、3-0 概率、0-3 概率和最常见战绩。
 
 | GamerLegion | BIG | BetBoom | HEROIC |
 |---|---|---|---|
@@ -477,42 +484,48 @@ reports/figures/teams/*.png
 
 ## 模型对比
 
-最新推荐对比使用同一份最新 Cologne 输入、同一份完整 ban/pick、同一份两层 bandit、同一份瑞士轮规则和同一份全局校准参数：
+最新推荐对比使用同一份最新 Cologne 输入、同一份完整 ban/pick、同一份两层 bandit 和同一份瑞士轮规则。注意：这是严格 Pick'Em 槽位口径，3-0 槽只认 3-0，晋级槽只认 3-1 / 3-2，0-3 槽只认 0-3，因此不能和 2026-05-25 的旧口径通过率直接比较。
 
 ```bash
 python3 -m stage1_predictor.compare_models \
-  --summary vrs-tier-scoreline-map-catboost=reports/iem_cologne_2026_stage1_prediction_vrs-tier-scoreline-map-catboost_2026-05-25.json \
-  --summary weighted-finetune-latest=reports/iem_cologne_2026_stage1_prediction_weighted-finetune-latest_latest_rules_2026-05-25.json \
-  --summary vrs-latest=reports/iem_cologne_2026_stage1_prediction_vrs-latest_latest_rules_2026-05-25.json \
-  --summary hltv-feature-latest=reports/iem_cologne_2026_stage1_prediction_hltv-feature-latest_latest_rules_2026-05-25.json \
-  --summary strict-real-catboost-latest=reports/iem_cologne_2026_stage1_prediction_strict-real-catboost-latest_latest_rules_2026-05-25.json \
-  --summary bo3-catboost-shallow-latest=reports/iem_cologne_2026_stage1_prediction_bo3-catboost-shallow-latest_latest_rules_2026-05-25.json \
-  --report reports/iem_cologne_2026_stage1_all_models_latest_rules_comparison_2026-05-25.md \
-  --json reports/iem_cologne_2026_stage1_all_models_latest_rules_comparison_2026-05-25.json
+  --summary vrs-reasonable=reports/iem_cologne_2026_stage1_prediction_vrs_reasonable_strict_pickem_2026-05-26.json \
+  --summary vrs=reports/iem_cologne_2026_stage1_prediction_vrs_strict_pickem_2026-05-26.json \
+  --summary hltv-feature=reports/iem_cologne_2026_stage1_prediction_hltv_feature_strict_pickem_2026-05-26.json \
+  --summary vrs-tier=reports/iem_cologne_2026_stage1_prediction_vrs_tier_strict_pickem_2026-05-26.json \
+  --summary strict-real-catboost=reports/iem_cologne_2026_stage1_prediction_strict_real_catboost_strict_pickem_2026-05-26.json \
+  --summary vrs-interaction=reports/iem_cologne_2026_stage1_prediction_vrs_interaction_strict_pickem_2026-05-26.json \
+  --summary logistic=reports/iem_cologne_2026_stage1_prediction_logistic_strict_pickem_2026-05-26.json \
+  --summary weighted-finetune=reports/iem_cologne_2026_stage1_prediction_weighted_finetune_strict_pickem_2026-05-26.json \
+  --summary factor-score=reports/iem_cologne_2026_stage1_prediction_factor_score_strict_pickem_2026-05-26.json \
+  --summary factor-weight=reports/iem_cologne_2026_stage1_prediction_factor_weight_strict_pickem_2026-05-26.json \
+  --summary bo3-catboost-shallow=reports/iem_cologne_2026_stage1_prediction_bo3_catboost_shallow_strict_pickem_2026-05-26.json \
+  --report reports/iem_cologne_2026_stage1_all_models_strict_pickem_comparison_2026-05-26.md \
+  --json reports/iem_cologne_2026_stage1_all_models_strict_pickem_comparison_2026-05-26.json
 ```
 
 当前 README 主模型：
 
 ```text
-vrs-tier-scoreline-map-catboost: 78.0% 通过，5.38 期望猜中
+vrs-reasonable-scoreline-map-catboost: 61.6% 通过，4.89 期望猜中
 ```
 
 当前同口径完整榜单：
 
 ```text
-catboost-major-only-latest: 85.4% 通过，5.67 期望猜中
-vrs-latest: 81.0% 通过，5.54 期望猜中
-hltv-feature-latest: 80.3% 通过，5.48 期望猜中
-vrs-tier-scoreline-map-catboost: 78.0% 通过，5.38 期望猜中
-strict-real-catboost-latest: 75.8% 通过，5.32 期望猜中
-logistic-latest: 72.3% 通过，5.18 期望猜中
-weighted-finetune-latest: 62.6% 通过，4.88 期望猜中
-factor-score-latest: 61.1% 通过，4.83 期望猜中
-factor-weight-latest: 60.5% 通过，4.81 期望猜中
-bo3-catboost-shallow-latest: 60.1% 通过，4.80 期望猜中
+vrs-reasonable: 61.6% 通过，4.89 期望猜中
+vrs: 49.4% 通过，4.53 期望猜中
+hltv-feature: 47.1% 通过，4.44 期望猜中
+vrs-tier: 45.0% 通过，4.33 期望猜中
+strict-real-catboost: 44.7% 通过，4.32 期望猜中
+vrs-interaction: 44.2% 通过，4.29 期望猜中
+logistic: 37.6% 通过，4.09 期望猜中
+weighted-finetune: 30.7% 通过，3.81 期望猜中
+factor-score: 28.9% 通过，3.74 期望猜中
+factor-weight: 28.7% 通过，3.72 期望猜中
+bo3-catboost-shallow: 28.6% 通过，3.73 期望猜中
 ```
 
-说明：`catboost-major-only-latest` 当前通过率最高，但它主要吃 Austin/Budapest 两个 Major 标签，样本少、过拟合风险高；所以 README 不把它设为主模型。`vrs-tier-scoreline-map-catboost` 继承 weighted-finetune 的训练链路，并加入对手 V社排名分层地图胜率和比分质量，因此现在作为主模型；`weighted-finetune-latest`、`vrs-complete-veto` / `vrs-latest` 作为扩展对照。
+说明：`vrs-reasonable-scoreline-map-catboost` 当前严格槽位口径最高，同时有 Austin/Budapest 单独回测、合并回测、方向约束、按日期 V社排名、预期分差残差和不确定性解释卡，因此现在作为 README 主模型；`vrs-tier-scoreline-map-catboost`、`weighted-finetune-latest`、`vrs-complete-veto` / `vrs` 作为扩展对照。
 
 ## 校准参数公平对照
 

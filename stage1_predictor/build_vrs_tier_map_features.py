@@ -12,6 +12,7 @@ from .catboost_model import VRS_TIER_FEATURE_COLUMNS
 from .collect_bo3_dataset import normalize_name
 from .factor_snapshot import build_factor_rows
 from .map_veto import DEFAULT_MAP_POOL, normalize_map_name
+from .vrs import parse_vrs_markdown
 
 
 CUMULATIVE_TIERS = (10, 20, 30, 40, 50, 70, 100)
@@ -20,16 +21,50 @@ PRIOR_WEIGHT = 6.0
 
 
 @dataclass(frozen=True)
+class VrsSnapshot:
+    snapshot_date: date
+    ranks_by_team: dict[str, int]
+
+
+@dataclass(frozen=True)
+class VrsTimeline:
+    snapshots: tuple[VrsSnapshot, ...]
+
+    def rank_for(self, team: str, match_date: date | None) -> int | None:
+        snapshot = self.snapshot_for(match_date)
+        if snapshot is None:
+            return None
+        return snapshot.ranks_by_team.get(normalize_name(team))
+
+    def snapshot_date_for(self, match_date: date | None) -> str:
+        snapshot = self.snapshot_for(match_date)
+        return snapshot.snapshot_date.isoformat() if snapshot else ""
+
+    def snapshot_for(self, match_date: date | None) -> VrsSnapshot | None:
+        if not self.snapshots:
+            return None
+        if match_date is None:
+            return self.snapshots[-1]
+        prior = [snapshot for snapshot in self.snapshots if snapshot.snapshot_date <= match_date]
+        if prior:
+            return prior[-1]
+        return self.snapshots[0]
+
+
+@dataclass(frozen=True)
 class Observation:
     team: str
     map_name: str
+    team_rank: int
     opponent_rank: int
     won: bool
     round_margin: int
+    expected_margin_residual: float
     scoreline_quality: float
     overtime: bool
     close_loss: bool
     start_date: date | None
+    vrs_snapshot_date: str
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -38,6 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--maps", required=True, help="BO3 map result rows with winner_score/loser_score")
     parser.add_argument("--feature-snapshot", required=True, help="Current event feature snapshot to augment")
     parser.add_argument("--base-map-stats", help="Optional existing map_veto CSV whose pick/ban rates should be preserved")
+    parser.add_argument("--vrs-standings-dir", help="Optional directory of Valve standings_global_YYYY_MM_DD.md snapshots for match-date VRS ranks")
     parser.add_argument("--team-map-output", required=True, help="Per-team-per-map VRS tier feature CSV")
     parser.add_argument("--snapshot-output", required=True, help="Augmented event feature snapshot")
     parser.add_argument("--map-stats-output", required=True, help="map_veto-compatible scoreline-adjusted map stats CSV")
@@ -53,7 +89,8 @@ def main(argv: list[str] | None = None) -> int:
     snapshot_rows = load_snapshot_rows(args.feature_snapshot)
     map_pool = tuple(normalize_map_name(value) for value in args.map_pool.split(",") if value.strip())
     base_map_stats = load_base_map_stats(args.base_map_stats) if args.base_map_stats else {}
-    observations = build_observations(map_rows, build_match_index(match_rows))
+    vrs_timeline = load_vrs_timeline(args.vrs_standings_dir) if args.vrs_standings_dir else None
+    observations = build_observations(map_rows, build_match_index(match_rows), vrs_timeline)
     team_map_rows = build_team_map_rows(observations, base_map_stats)
     write_rows(args.team_map_output, team_map_rows)
     augmented_snapshot = augment_snapshot_rows(snapshot_rows, team_map_rows, map_pool)
@@ -94,6 +131,32 @@ def load_base_map_stats(path: str | Path) -> dict[tuple[str, str], dict[str, str
     }
 
 
+def load_vrs_timeline(directory: str | Path) -> VrsTimeline:
+    snapshots: list[VrsSnapshot] = []
+    for path in sorted(Path(directory).glob("standings_global_*.md")):
+        snapshot_date = parse_vrs_snapshot_date(path.name)
+        if snapshot_date is None:
+            continue
+        standings = parse_vrs_markdown(path.read_text(encoding="utf-8"))
+        ranks = {normalize_name(entry.team): entry.rank for entry in standings.values()}
+        if ranks:
+            snapshots.append(VrsSnapshot(snapshot_date=snapshot_date, ranks_by_team=ranks))
+    if not snapshots:
+        raise ValueError(f"No standings_global_YYYY_MM_DD.md snapshots found in {directory}")
+    return VrsTimeline(tuple(sorted(snapshots, key=lambda item: item.snapshot_date)))
+
+
+def parse_vrs_snapshot_date(name: str) -> date | None:
+    marker = "standings_global_"
+    if marker not in name:
+        return None
+    raw = name.split(marker, 1)[1].removesuffix(".md")
+    try:
+        return datetime.strptime(raw, "%Y_%m_%d").date()
+    except ValueError:
+        return None
+
+
 def build_match_index(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     output: dict[str, dict[str, str]] = {}
     for row in rows:
@@ -104,7 +167,11 @@ def build_match_index(rows: list[dict[str, str]]) -> dict[str, dict[str, str]]:
     return output
 
 
-def build_observations(map_rows: list[dict[str, str]], matches: dict[str, dict[str, str]]) -> list[Observation]:
+def build_observations(
+    map_rows: list[dict[str, str]],
+    matches: dict[str, dict[str, str]],
+    vrs_timeline: "VrsTimeline | None" = None,
+) -> list[Observation]:
     observations: list[Observation] = []
     for row in map_rows:
         if row.get("status") != "finished":
@@ -126,17 +193,23 @@ def build_observations(map_rows: list[dict[str, str]], matches: dict[str, dict[s
             team_score = winner_score if won else loser_score
             opponent_score = loser_score if won else winner_score
             margin = team_score - opponent_score
+            match_date = parse_date(match.get("start_date", ""))
+            team_rank, snapshot_date = vrs_rank(team, match, match_date, vrs_timeline)
+            opponent_rank, _ = vrs_rank(opponent, match, match_date, vrs_timeline)
             observations.append(
                 Observation(
                     team=canonical_team_name(team, match),
                     map_name=normalize_map_name(row.get("map_name", "")),
-                    opponent_rank=opponent_vrs_rank(team, opponent, match),
+                    team_rank=team_rank,
+                    opponent_rank=opponent_rank,
                     won=won,
                     round_margin=margin,
+                    expected_margin_residual=margin - expected_round_margin(team_rank, opponent_rank),
                     scoreline_quality=scoreline_quality(team_score, opponent_score),
                     overtime=is_overtime_score(team_score, opponent_score),
                     close_loss=(not won) and is_close_score(team_score, opponent_score),
-                    start_date=parse_date(match.get("start_date", "")),
+                    start_date=match_date,
+                    vrs_snapshot_date=snapshot_date,
                 )
             )
     return observations
@@ -150,12 +223,25 @@ def canonical_team_name(team: str, match: dict[str, str]) -> str:
     return team
 
 
-def opponent_vrs_rank(team: str, opponent: str, match: dict[str, str]) -> int:
+def vrs_rank(team: str, match: dict[str, str], match_date: date | None, vrs_timeline: "VrsTimeline | None") -> tuple[int, str]:
+    if vrs_timeline is not None:
+        rank = vrs_timeline.rank_for(team, match_date)
+        if rank is not None:
+            return rank, vrs_timeline.snapshot_date_for(match_date)
+    side = side_for_match_team(team, match)
+    rank = max(1, int_number(match.get(f"{side}_vrs_rank") or match.get(f"{side}_rank_bo3"), default=100))
+    return rank, "match_row"
+
+
+def side_for_match_team(team: str, match: dict[str, str]) -> str:
     team_key = normalize_name(team)
-    opponent_side = "team2" if normalize_name(match.get("team1", "")) == team_key else "team1"
-    if normalize_name(match.get(opponent_side, "")) != normalize_name(opponent):
-        opponent_side = "team1" if opponent_side == "team2" else "team2"
-    return max(1, int_number(match.get(f"{opponent_side}_vrs_rank") or match.get(f"{opponent_side}_rank_bo3"), default=100))
+    if normalize_name(match.get("team1", "")) == team_key:
+        return "team1"
+    return "team2"
+
+
+def expected_round_margin(team_rank: int, opponent_rank: int) -> float:
+    return clamp((opponent_rank - team_rank) / 10.0, -8.0, 8.0)
 
 
 def scoreline_quality(team_score: int, opponent_score: int) -> float:
@@ -244,6 +330,7 @@ def aggregate(
     smoothed = (wins + prior_rate * PRIOR_WEIGHT) / (maps + PRIOR_WEIGHT) * 100.0
     quality = average([item.scoreline_quality for item in observations], average([item.scoreline_quality for item in team_prior], 0.0))
     margin = average([item.round_margin for item in observations], average([item.round_margin for item in team_prior], 0.0))
+    residual = average([item.expected_margin_residual for item in observations], average([item.expected_margin_residual for item in team_prior], 0.0))
     confidence = sample_confidence(maps)
     opponent_strength = average([opponent_strength_score(item.opponent_rank) for item in observations], average([opponent_strength_score(item.opponent_rank) for item in team_prior], 0.5))
     adjusted_quality = average([opponent_adjusted_scoreline(item) for item in observations], average([opponent_adjusted_scoreline(item) for item in team_prior], 0.0))
@@ -258,6 +345,7 @@ def aggregate(
         "raw_win_rate": raw_win_rate,
         "smoothed_win_rate": smoothed,
         "avg_round_margin": margin,
+        "avg_expected_margin_residual": residual,
         "avg_scoreline_quality": quality,
         "overtime_count": float(sum(1 for item in observations if item.overtime)),
         "close_loss_count": float(sum(1 for item in observations if item.close_loss)),
@@ -344,6 +432,7 @@ def interaction_features(values: dict[str, float], pick_rate: float, ban_rate: f
     opponent_quality_edge = win_edge * opponent_factor / 2.0
     win_sample_edge = win_edge * confidence
     scoreline_sample = values["opponent_adjusted_scoreline_quality"] * confidence
+    residual_confidence = values["avg_expected_margin_residual"] * confidence
     veto_credibility = clamp((pick_rate + max(0.0, 35.0 - ban_rate)) / 70.0, 0.0, 1.0)
     veto_strength = 50.0 + (adjusted_strength(values) - 50.0) * (0.35 + veto_credibility * 0.65)
     pick_ban_proxy = veto_credibility * (adjusted_strength(values) - 50.0) / 50.0
@@ -363,12 +452,15 @@ def interaction_features(values: dict[str, float], pick_rate: float, ban_rate: f
         "vrs_overtime_strong_opponent_signal": values["overtime_strong_opponent_signal"],
         "vrs_weak_opponent_close_penalty": values["weak_opponent_close_penalty"],
         "vrs_recent_strong_opponent_score": values["recent_strong_opponent_score"],
+        "vrs_expected_margin_residual": values["avg_expected_margin_residual"],
+        "vrs_expected_margin_residual_confidence": residual_confidence,
         "vrs_team_volatility": values["team_volatility"],
     }
 
 
 def adjusted_strength(values: dict[str, float]) -> float:
     base = values["smoothed_win_rate"] + values["opponent_adjusted_scoreline_quality"] * 10.0
+    base += values["avg_expected_margin_residual"] * 1.1
     base += values["recent_strong_opponent_score"] * 6.0
     base += values["overtime_strong_opponent_signal"] * 3.0
     base -= values["weak_opponent_close_penalty"] * 10.0
@@ -503,6 +595,7 @@ def render_report(
     maps = sorted({row["map"] for row in team_map_rows})
     overtime = sum(1 for item in observations if item.overtime)
     close_losses = sum(1 for item in observations if item.close_loss)
+    vrs_snapshots = sorted({item.vrs_snapshot_date for item in observations if item.vrs_snapshot_date})
     return "\n".join(
         [
             "# VRS Tier Scoreline Map Features",
@@ -518,6 +611,7 @@ def render_report(
             f"- Directed map observations: `{len(observations)}`",
             f"- Overtime observations: `{overtime}`",
             f"- Close-loss observations: `{close_losses}`",
+            f"- VRS rank snapshots used: `{', '.join(vrs_snapshots)}`",
             "",
             "## Feature Design",
             "",
@@ -526,6 +620,8 @@ def render_report(
             "- Smoothed win rates use Bayesian shrinkage toward a blend of team-map baseline and global map baseline.",
             "- Scoreline quality is MR12/overtime aware: regulation margins scale strongly, overtime margins stay close to zero.",
             "- Interaction features combine scoreline quality with opponent VRS rank, map win rate with sample confidence, scoreline quality with sample confidence, map strength with pick/ban credibility, BO1 upset risk with BO3 map depth, close/overtime results with opponent strength, and recency with opponent quality.",
+            "- Match-date VRS rank lookup uses the latest available Valve `standings_global_YYYY_MM_DD.md` snapshot at or before each BO3 match date; if none is older than the match, it falls back to the earliest available snapshot.",
+            "- Expected-margin residual compares the actual map round margin against the margin implied by the two teams' VRS ranks, so narrow wins over weak opposition can become negative and close losses to strong opposition can become positive.",
             "- The map_veto-compatible win rate uses veto-credible map strength, so a strong map that is rarely picked or often banned is discounted before Swiss BO1/BO3 simulation.",
         ]
     ) + "\n"

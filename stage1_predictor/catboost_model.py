@@ -73,6 +73,8 @@ NUMERIC_FEATURES = (
     "vrs_overtime_strong_opponent_signal_diff",
     "vrs_weak_opponent_close_penalty_diff",
     "vrs_recent_strong_opponent_score_diff",
+    "vrs_expected_margin_residual_diff",
+    "vrs_expected_margin_residual_confidence_diff",
     "vrs_team_volatility_diff",
     "vrs_seed_volatility_rebound_diff",
     "vrs_pick_ban_opponent_pool_edge",
@@ -133,6 +135,8 @@ VRS_TIER_FEATURE_COLUMNS = (
     "vrs_overtime_strong_opponent_signal",
     "vrs_weak_opponent_close_penalty",
     "vrs_recent_strong_opponent_score",
+    "vrs_expected_margin_residual",
+    "vrs_expected_margin_residual_confidence",
     "vrs_team_volatility",
     "vrs_seed_volatility_rebound",
 )
@@ -292,6 +296,7 @@ def train_catboost_model(
     depth: int = 3,
     learning_rate: float = 0.05,
     l2_leaf_reg: float = 8.0,
+    use_directional_constraints: bool = False,
 ) -> dict[str, object]:
     if not examples:
         raise ValueError("Cannot train CatBoost on zero examples")
@@ -304,17 +309,20 @@ def train_catboost_model(
     labels = [example.target for example in examples]
     weights = [example.weight for example in examples]
     cat_indexes = [FEATURES.index(name) for name in CATEGORICAL_FEATURES]
-    model = CatBoostClassifier(
-        iterations=iterations,
-        depth=depth,
-        learning_rate=learning_rate,
-        l2_leaf_reg=l2_leaf_reg,
-        loss_function="Logloss",
-        eval_metric="BrierScore",
-        random_seed=42,
-        verbose=False,
-        allow_writing_files=False,
-    )
+    params = {
+        "iterations": iterations,
+        "depth": depth,
+        "learning_rate": learning_rate,
+        "l2_leaf_reg": l2_leaf_reg,
+        "loss_function": "Logloss",
+        "eval_metric": "BrierScore",
+        "random_seed": 42,
+        "verbose": False,
+        "allow_writing_files": False,
+    }
+    if use_directional_constraints:
+        params["monotone_constraints"] = directional_monotone_constraints()
+    model = CatBoostClassifier(**params)
     model.fit(Pool(rows, label=labels, weight=weights, cat_features=cat_indexes))
     output = Path(model_path)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -330,8 +338,89 @@ def train_catboost_model(
             "depth": depth,
             "learning_rate": learning_rate,
             "l2_leaf_reg": l2_leaf_reg,
+            "use_directional_constraints": use_directional_constraints,
         },
     }
+
+
+def directional_monotone_constraints() -> list[int]:
+    positive = {
+        "score_diff",
+        "seed_diff_higher_is_better",
+        "vrs_points_diff",
+        "hltv_rating3_diff",
+        "hltv_kd_diff",
+        "hltv_maps_log_diff",
+        "base_strength_factor_diff",
+        "seed_path_factor_diff",
+        "hltv_rating_factor_diff",
+        "firepower_factor_diff",
+        "map_pool_depth_factor_diff",
+        "sample_confidence_factor_diff",
+        "opponent_quality_proxy_factor_diff",
+        "roster_data_factor_diff",
+        "overall_factor_rating_diff",
+        "glicko_mean_diff",
+        "glicko_expected",
+        "vrs_tier_map_strength_diff",
+        "vrs_tier_map_smoothed_win_rate_diff",
+        "vrs_tier_map_sample_log_diff",
+        "vrs_tier_map_quality_diff",
+        "vrs_tier_map_round_margin_diff",
+        "vrs_tier_map_overtime_rate_diff",
+        "vrs_top10_map_smoothed_win_rate_diff",
+        "vrs_top20_map_smoothed_win_rate_diff",
+        "vrs_top30_map_smoothed_win_rate_diff",
+        "vrs_top40_map_smoothed_win_rate_diff",
+        "vrs_top50_map_smoothed_win_rate_diff",
+        "vrs_top70_map_smoothed_win_rate_diff",
+        "vrs_top100_map_smoothed_win_rate_diff",
+        "vrs_top10_map_quality_diff",
+        "vrs_top20_map_quality_diff",
+        "vrs_top30_map_quality_diff",
+        "vrs_top40_map_quality_diff",
+        "vrs_top50_map_quality_diff",
+        "vrs_top70_map_quality_diff",
+        "vrs_top100_map_quality_diff",
+        "vrs_top10_map_sample_log_diff",
+        "vrs_top20_map_sample_log_diff",
+        "vrs_top30_map_sample_log_diff",
+        "vrs_top40_map_sample_log_diff",
+        "vrs_top50_map_sample_log_diff",
+        "vrs_top70_map_sample_log_diff",
+        "vrs_top100_map_sample_log_diff",
+        "vrs_opponent_adjusted_scoreline_quality_diff",
+        "vrs_map_win_opponent_quality_diff",
+        "vrs_map_win_sample_confidence_diff",
+        "vrs_scoreline_sample_confidence_diff",
+        "vrs_map_veto_credibility_diff",
+        "vrs_map_veto_strength_diff",
+        "vrs_pick_ban_opponent_pool_proxy_diff",
+        "vrs_bo3_map_depth_strength_diff",
+        "vrs_overtime_strong_opponent_signal_diff",
+        "vrs_recent_strong_opponent_score_diff",
+        "vrs_expected_margin_residual_diff",
+        "vrs_expected_margin_residual_confidence_diff",
+        "vrs_seed_volatility_rebound_diff",
+        "vrs_pick_ban_opponent_pool_edge",
+        "vrs_bo1_bo3_map_depth_edge",
+    }
+    negative = {
+        "glicko_uncertainty_diff",
+        "vrs_tier_map_close_loss_rate_diff",
+        "vrs_bo1_single_map_upset_risk_diff",
+        "vrs_weak_opponent_close_penalty_diff",
+        "vrs_team_volatility_diff",
+    }
+    constraints: list[int] = []
+    for feature in FEATURES:
+        if feature in positive:
+            constraints.append(1)
+        elif feature in negative:
+            constraints.append(-1)
+        else:
+            constraints.append(0)
+    return constraints
 
 
 def score_teams_with_catboost(
