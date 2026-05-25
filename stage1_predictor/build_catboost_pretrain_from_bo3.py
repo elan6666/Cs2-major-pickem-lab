@@ -139,6 +139,7 @@ def feature_row_for_team(
     if key in snapshot_rows:
         row = dict(snapshot_rows[key])
         row.update(vrs_tier_map_features.get((key, normalize_map_name(map_row.get("map_name", ""))), {}))
+        add_seed_volatility_rebound(row)
         return row
     side = side_for_team(team, match)
     rank = match.get(f"{side}_vrs_rank", "") or match.get(f"{side}_rank_bo3", "") or "100"
@@ -166,7 +167,24 @@ def feature_row_for_team(
         "round_system": "match_map_pretrain",
     }
     row.update(vrs_tier_map_features.get((key, normalize_map_name(map_row.get("map_name", ""))), {}))
+    add_seed_volatility_rebound(row)
     return row
+
+
+def add_seed_volatility_rebound(row: dict[str, str]) -> None:
+    existing = row.get("vrs_seed_volatility_rebound", "")
+    try:
+        if existing and abs(float(existing)) > 1e-9:
+            return
+    except ValueError:
+        pass
+    try:
+        seed = float(row.get("seed", "8") or 8.0)
+        volatility = float(row.get("vrs_team_volatility", "0") or 0.0)
+    except ValueError:
+        row["vrs_seed_volatility_rebound"] = "0.000000"
+        return
+    row["vrs_seed_volatility_rebound"] = f"{volatility * max(0.0, min(1.5, (seed - 8.0) / 8.0)):.6f}"
 
 
 def side_for_team(team: str, match: dict[str, str]) -> str:

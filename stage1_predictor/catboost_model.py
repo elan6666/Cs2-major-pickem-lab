@@ -61,6 +61,22 @@ NUMERIC_FEATURES = (
     "vrs_top50_map_sample_log_diff",
     "vrs_top70_map_sample_log_diff",
     "vrs_top100_map_sample_log_diff",
+    "vrs_opponent_adjusted_scoreline_quality_diff",
+    "vrs_map_win_opponent_quality_diff",
+    "vrs_map_win_sample_confidence_diff",
+    "vrs_scoreline_sample_confidence_diff",
+    "vrs_map_veto_credibility_diff",
+    "vrs_map_veto_strength_diff",
+    "vrs_pick_ban_opponent_pool_proxy_diff",
+    "vrs_bo1_single_map_upset_risk_diff",
+    "vrs_bo3_map_depth_strength_diff",
+    "vrs_overtime_strong_opponent_signal_diff",
+    "vrs_weak_opponent_close_penalty_diff",
+    "vrs_recent_strong_opponent_score_diff",
+    "vrs_team_volatility_diff",
+    "vrs_seed_volatility_rebound_diff",
+    "vrs_pick_ban_opponent_pool_edge",
+    "vrs_bo1_bo3_map_depth_edge",
 )
 
 CATEGORICAL_FEATURES = (
@@ -105,9 +121,28 @@ VRS_TIER_FEATURE_COLUMNS = (
     "vrs_top50_map_sample_log",
     "vrs_top70_map_sample_log",
     "vrs_top100_map_sample_log",
+    "vrs_opponent_adjusted_scoreline_quality",
+    "vrs_map_win_opponent_quality",
+    "vrs_map_win_sample_confidence",
+    "vrs_scoreline_sample_confidence",
+    "vrs_map_veto_credibility",
+    "vrs_map_veto_strength",
+    "vrs_pick_ban_opponent_pool_proxy",
+    "vrs_bo1_single_map_upset_risk",
+    "vrs_bo3_map_depth_strength",
+    "vrs_overtime_strong_opponent_signal",
+    "vrs_weak_opponent_close_penalty",
+    "vrs_recent_strong_opponent_score",
+    "vrs_team_volatility",
+    "vrs_seed_volatility_rebound",
 )
 
-OPTIONAL_NUMERIC_FEATURES = tuple(f"{column}_diff" for column in VRS_TIER_FEATURE_COLUMNS)
+OPTIONAL_PAIRWISE_FEATURES = (
+    "vrs_pick_ban_opponent_pool_edge",
+    "vrs_bo1_bo3_map_depth_edge",
+)
+
+OPTIONAL_NUMERIC_FEATURES = tuple(f"{column}_diff" for column in VRS_TIER_FEATURE_COLUMNS) + OPTIONAL_PAIRWISE_FEATURES
 
 
 @dataclass(frozen=True)
@@ -237,6 +272,15 @@ def build_pair_features(left: dict[str, str], right: dict[str, str]) -> dict[str
         features[f"{column}_diff"] = number(left, column, 50.0) - number(right, column, 50.0)
     for column in VRS_TIER_FEATURE_COLUMNS:
         features[f"{column}_diff"] = number(left, column, vrs_feature_default(column)) - number(right, column, vrs_feature_default(column))
+    left_veto_strength = number(left, "vrs_map_veto_strength", number(left, "vrs_tier_map_strength", 50.0))
+    right_veto_strength = number(right, "vrs_map_veto_strength", number(right, "vrs_tier_map_strength", 50.0))
+    left_veto_credibility = number(left, "vrs_map_veto_credibility", 0.0)
+    right_veto_credibility = number(right, "vrs_map_veto_credibility", 0.0)
+    strength_edge = (left_veto_strength - right_veto_strength) / 50.0
+    features["vrs_pick_ban_opponent_pool_edge"] = strength_edge * (0.5 + left_veto_credibility + right_veto_credibility * 0.5)
+    bo3_depth_edge = number(left, "vrs_bo3_map_depth_strength", 0.0) - number(right, "vrs_bo3_map_depth_strength", 0.0)
+    bo1_risk_edge = number(left, "vrs_bo1_single_map_upset_risk", 0.0) - number(right, "vrs_bo1_single_map_upset_risk", 0.0)
+    features["vrs_bo1_bo3_map_depth_edge"] = bo3_depth_edge - bo1_risk_edge * 0.5
     features.update(rating_features(left, right))
     return {name: features[name] for name in FEATURES}
 

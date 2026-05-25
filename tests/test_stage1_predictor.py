@@ -491,8 +491,8 @@ class Stage1PredictorTests(unittest.TestCase):
         self.assertLess(abs(scoreline_quality(14, 16)), 0.2)
         rows = build_team_map_rows(
             [
-                Observation("Team A", "Ancient", 8, True, 10, scoreline_quality(13, 3), False, False),
-                Observation("Team A", "Ancient", 18, False, -2, scoreline_quality(14, 16), True, True),
+                Observation("Team A", "Ancient", 8, True, 10, scoreline_quality(13, 3), False, False, None),
+                Observation("Team A", "Ancient", 18, False, -2, scoreline_quality(14, 16), True, True, None),
             ]
         )
         self.assertEqual(len(rows), 1)
@@ -500,6 +500,9 @@ class Stage1PredictorTests(unittest.TestCase):
         self.assertEqual(rows[0]["vrs_top20_maps"], "2")
         self.assertEqual(rows[0]["vrs_bucket_11_20_maps"], "1")
         self.assertEqual(rows[0]["close_loss_count"], "1")
+        self.assertIn("vrs_opponent_adjusted_scoreline_quality", rows[0])
+        self.assertIn("vrs_map_win_sample_confidence", rows[0])
+        self.assertIn("vrs_weak_opponent_close_penalty", rows[0])
 
     def test_catboost_example_scaling_preserves_features_and_scales_weight(self) -> None:
         example = PairwiseExample(features={"score_diff": 1.0, "team": "A"}, target=1, weight=0.4)

@@ -5,6 +5,7 @@ import csv
 import math
 from collections import defaultdict
 from dataclasses import dataclass
+from datetime import date, datetime
 from pathlib import Path
 
 from .catboost_model import VRS_TIER_FEATURE_COLUMNS
@@ -28,6 +29,7 @@ class Observation:
     scoreline_quality: float
     overtime: bool
     close_loss: bool
+    start_date: date | None
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -50,12 +52,12 @@ def main(argv: list[str] | None = None) -> int:
     map_rows = load_rows(args.maps)
     snapshot_rows = load_snapshot_rows(args.feature_snapshot)
     map_pool = tuple(normalize_map_name(value) for value in args.map_pool.split(",") if value.strip())
+    base_map_stats = load_base_map_stats(args.base_map_stats) if args.base_map_stats else {}
     observations = build_observations(map_rows, build_match_index(match_rows))
-    team_map_rows = build_team_map_rows(observations)
+    team_map_rows = build_team_map_rows(observations, base_map_stats)
     write_rows(args.team_map_output, team_map_rows)
     augmented_snapshot = augment_snapshot_rows(snapshot_rows, team_map_rows, map_pool)
     write_rows(args.snapshot_output, augmented_snapshot)
-    base_map_stats = load_base_map_stats(args.base_map_stats) if args.base_map_stats else {}
     map_stats_rows = build_adjusted_map_stats_rows(team_map_rows, base_map_stats)
     write_rows(args.map_stats_output, map_stats_rows)
     Path(args.report).parent.mkdir(parents=True, exist_ok=True)
@@ -134,6 +136,7 @@ def build_observations(map_rows: list[dict[str, str]], matches: dict[str, dict[s
                     scoreline_quality=scoreline_quality(team_score, opponent_score),
                     overtime=is_overtime_score(team_score, opponent_score),
                     close_loss=(not won) and is_close_score(team_score, opponent_score),
+                    start_date=parse_date(match.get("start_date", "")),
                 )
             )
     return observations
@@ -177,7 +180,11 @@ def is_close_score(team_score: int, opponent_score: int) -> bool:
     return abs(team_score - opponent_score) <= 2 or is_overtime_score(team_score, opponent_score)
 
 
-def build_team_map_rows(observations: list[Observation]) -> list[dict[str, str]]:
+def build_team_map_rows(
+    observations: list[Observation],
+    base_map_stats: dict[tuple[str, str], dict[str, str]] | None = None,
+) -> list[dict[str, str]]:
+    base_map_stats = base_map_stats or {}
     by_team_map: dict[tuple[str, str], list[Observation]] = defaultdict(list)
     by_map: dict[str, list[Observation]] = defaultdict(list)
     for observation in observations:
@@ -188,17 +195,23 @@ def build_team_map_rows(observations: list[Observation]) -> list[dict[str, str]]
     for (team, map_name), team_map_observations in sorted(by_team_map.items()):
         global_map_observations = by_map[map_name]
         base = aggregate(team_map_observations, global_map_observations)
+        base_veto = base_map_stats.get((normalize_name(team), normalize_map_name(map_name)), {})
+        pick_rate = float_number(base_veto.get("pick_rate"), 0.0)
+        ban_rate = float_number(base_veto.get("ban_rate"), 0.0)
+        interaction = interaction_features(base, pick_rate, ban_rate)
         row = {
             "team": team,
             "map": map_name,
             **format_aggregate("", base),
-            "vrs_tier_map_strength": f"{adjusted_strength(base):.2f}",
+            "vrs_tier_map_strength": f"{interaction['vrs_tier_map_strength']:.2f}",
             "vrs_tier_map_smoothed_win_rate": f"{base['smoothed_win_rate']:.2f}",
             "vrs_tier_map_sample_log": f"{math.log1p(base['maps']):.6f}",
             "vrs_tier_map_quality": f"{base['avg_scoreline_quality']:.6f}",
             "vrs_tier_map_round_margin": f"{base['avg_round_margin']:.6f}",
             "vrs_tier_map_overtime_rate": f"{rate(base['overtime_count'], base['maps']):.6f}",
             "vrs_tier_map_close_loss_rate": f"{rate(base['close_loss_count'], base['maps']):.6f}",
+            **{name: f"{value:.6f}" for name, value in interaction.items() if name != "vrs_tier_map_strength"},
+            "vrs_seed_volatility_rebound": "0.000000",
         }
         for threshold in CUMULATIVE_TIERS:
             tier_observations = [item for item in team_map_observations if item.opponent_rank <= threshold]
@@ -231,6 +244,14 @@ def aggregate(
     smoothed = (wins + prior_rate * PRIOR_WEIGHT) / (maps + PRIOR_WEIGHT) * 100.0
     quality = average([item.scoreline_quality for item in observations], average([item.scoreline_quality for item in team_prior], 0.0))
     margin = average([item.round_margin for item in observations], average([item.round_margin for item in team_prior], 0.0))
+    confidence = sample_confidence(maps)
+    opponent_strength = average([opponent_strength_score(item.opponent_rank) for item in observations], average([opponent_strength_score(item.opponent_rank) for item in team_prior], 0.5))
+    adjusted_quality = average([opponent_adjusted_scoreline(item) for item in observations], average([opponent_adjusted_scoreline(item) for item in team_prior], 0.0))
+    recent_quality = average([recency_weight(item) * opponent_strength_score(item.opponent_rank) * item.scoreline_quality for item in observations], 0.0)
+    overtime_strong = average([1.0 for item in observations if item.overtime and item.opponent_rank <= 30], 0.0)
+    close_vs_strong = average([1.0 for item in observations if item.close_loss and item.opponent_rank <= 30], 0.0)
+    weak_close_penalty = average([weak_opponent_close_penalty(item) for item in observations], 0.0)
+    volatility = standard_deviation([item.round_margin for item in observations])
     return {
         "maps": float(maps),
         "wins": float(wins),
@@ -240,6 +261,13 @@ def aggregate(
         "avg_scoreline_quality": quality,
         "overtime_count": float(sum(1 for item in observations if item.overtime)),
         "close_loss_count": float(sum(1 for item in observations if item.close_loss)),
+        "sample_confidence": confidence,
+        "avg_opponent_strength": opponent_strength,
+        "opponent_adjusted_scoreline_quality": adjusted_quality,
+        "recent_strong_opponent_score": recent_quality,
+        "overtime_strong_opponent_signal": overtime_strong + close_vs_strong * 0.5,
+        "weak_opponent_close_penalty": weak_close_penalty,
+        "team_volatility": volatility,
     }
 
 
@@ -264,6 +292,9 @@ def augment_snapshot_rows(snapshot_rows: list[dict[str, str]], team_map_rows: li
         team_key = normalize_name(row["team"])
         selected = [by_team_map.get((team_key, map_name)) for map_name in map_pool]
         aggregate_features = aggregate_feature_rows([item for item in selected if item])
+        seed = float_number(row.get("seed"), 8.0)
+        volatility = aggregate_features.get("vrs_team_volatility", 0.0)
+        aggregate_features["vrs_seed_volatility_rebound"] = volatility * clamp((seed - 8.0) / 8.0, 0.0, 1.5)
         for column in VRS_TIER_FEATURE_COLUMNS:
             enriched[column] = f"{aggregate_features.get(column, default_feature_value(column)):.6f}"
         output.append(enriched)
@@ -287,7 +318,7 @@ def build_adjusted_map_stats_rows(
     output: list[dict[str, str]] = []
     for row in team_map_rows:
         maps = int_number(row.get("maps"))
-        strength = float_number(row.get("vrs_tier_map_strength"), 50.0)
+        strength = float_number(row.get("vrs_map_veto_strength"), float_number(row.get("vrs_tier_map_strength"), 50.0))
         base = base_map_stats.get((normalize_name(row["team"]), normalize_map_name(row["map"])), {})
         output.append(
             {
@@ -306,14 +337,105 @@ def build_adjusted_map_stats_rows(
     return output
 
 
+def interaction_features(values: dict[str, float], pick_rate: float, ban_rate: float) -> dict[str, float]:
+    confidence = values["sample_confidence"]
+    win_edge = values["smoothed_win_rate"] - 50.0
+    opponent_factor = 0.65 + values["avg_opponent_strength"] * 0.70
+    opponent_quality_edge = win_edge * opponent_factor / 2.0
+    win_sample_edge = win_edge * confidence
+    scoreline_sample = values["opponent_adjusted_scoreline_quality"] * confidence
+    veto_credibility = clamp((pick_rate + max(0.0, 35.0 - ban_rate)) / 70.0, 0.0, 1.0)
+    veto_strength = 50.0 + (adjusted_strength(values) - 50.0) * (0.35 + veto_credibility * 0.65)
+    pick_ban_proxy = veto_credibility * (adjusted_strength(values) - 50.0) / 50.0
+    bo1_upset_risk = max(0.0, 1.0 - confidence) * abs(win_edge) / 50.0
+    bo3_depth = confidence * max(0.0, win_edge) / 50.0
+    return {
+        "vrs_tier_map_strength": adjusted_strength(values),
+        "vrs_opponent_adjusted_scoreline_quality": values["opponent_adjusted_scoreline_quality"],
+        "vrs_map_win_opponent_quality": opponent_quality_edge,
+        "vrs_map_win_sample_confidence": win_sample_edge,
+        "vrs_scoreline_sample_confidence": scoreline_sample,
+        "vrs_map_veto_credibility": veto_credibility,
+        "vrs_map_veto_strength": clamp(veto_strength, 5.0, 95.0),
+        "vrs_pick_ban_opponent_pool_proxy": pick_ban_proxy,
+        "vrs_bo1_single_map_upset_risk": bo1_upset_risk,
+        "vrs_bo3_map_depth_strength": bo3_depth,
+        "vrs_overtime_strong_opponent_signal": values["overtime_strong_opponent_signal"],
+        "vrs_weak_opponent_close_penalty": values["weak_opponent_close_penalty"],
+        "vrs_recent_strong_opponent_score": values["recent_strong_opponent_score"],
+        "vrs_team_volatility": values["team_volatility"],
+    }
+
+
 def adjusted_strength(values: dict[str, float]) -> float:
-    return clamp(values["smoothed_win_rate"] + values["avg_scoreline_quality"] * 8.0, 5.0, 95.0)
+    base = values["smoothed_win_rate"] + values["opponent_adjusted_scoreline_quality"] * 10.0
+    base += values["recent_strong_opponent_score"] * 6.0
+    base += values["overtime_strong_opponent_signal"] * 3.0
+    base -= values["weak_opponent_close_penalty"] * 10.0
+    confidence = 0.35 + values["sample_confidence"] * 0.65
+    return clamp(50.0 + (base - 50.0) * confidence, 5.0, 95.0)
 
 
 def win_rate(observations: list[Observation]) -> float:
     if not observations:
         return 0.5
     return sum(1 for item in observations if item.won) / len(observations)
+
+
+def sample_confidence(maps: int) -> float:
+    return min(1.0, maps / 10.0) if maps > 0 else 0.0
+
+
+def opponent_strength_score(rank: int) -> float:
+    return clamp((101.0 - rank) / 100.0, 0.0, 1.0)
+
+
+def opponent_adjusted_scoreline(item: Observation) -> float:
+    strength = opponent_strength_score(item.opponent_rank)
+    quality = item.scoreline_quality
+    if quality >= 0:
+        adjusted = quality * (0.65 + 0.70 * strength)
+        if item.won and item.opponent_rank > 50 and quality < 0.30:
+            adjusted -= (0.30 - quality) * (1.0 - strength) * 0.80
+        return adjusted
+    return quality * (1.30 - 0.85 * strength)
+
+
+def weak_opponent_close_penalty(item: Observation) -> float:
+    if item.opponent_rank <= 50:
+        return 0.0
+    close_win = item.won and item.scoreline_quality < 0.30
+    close_loss = (not item.won) and is_close_score(item.round_margin, 0)
+    if not close_win and not close_loss:
+        return 0.0
+    return (1.0 - opponent_strength_score(item.opponent_rank)) * (0.5 if close_win else 1.0)
+
+
+def recency_weight(item: Observation) -> float:
+    if item.start_date is None:
+        return 0.75
+    reference = date(2026, 5, 25)
+    age_days = max(0, (reference - item.start_date).days)
+    return math.exp(-age_days / 60.0)
+
+
+def standard_deviation(values: list[float]) -> float:
+    if len(values) < 2:
+        return 0.0
+    mean = sum(values) / len(values)
+    return math.sqrt(sum((value - mean) ** 2 for value in values) / len(values))
+
+
+def parse_date(value: str) -> date | None:
+    if not value:
+        return None
+    try:
+        return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
+    except ValueError:
+        try:
+            return datetime.strptime(value[:10], "%Y-%m-%d").date()
+        except ValueError:
+            return None
 
 
 def average(values: list[float], default: float) -> float:
@@ -403,6 +525,8 @@ def render_report(
             "- Diagnostic buckets: VRS 1-10, 11-20, 21-30, 31-40, 41-50, 51-70, 71-100.",
             "- Smoothed win rates use Bayesian shrinkage toward a blend of team-map baseline and global map baseline.",
             "- Scoreline quality is MR12/overtime aware: regulation margins scale strongly, overtime margins stay close to zero.",
+            "- Interaction features combine scoreline quality with opponent VRS rank, map win rate with sample confidence, scoreline quality with sample confidence, map strength with pick/ban credibility, BO1 upset risk with BO3 map depth, close/overtime results with opponent strength, and recency with opponent quality.",
+            "- The map_veto-compatible win rate uses veto-credible map strength, so a strong map that is rarely picked or often banned is discounted before Swiss BO1/BO3 simulation.",
         ]
     ) + "\n"
 
