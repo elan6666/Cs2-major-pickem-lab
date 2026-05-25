@@ -1,0 +1,189 @@
+{
+  "teams": "data/iem_cologne_2026_stage1_teams.csv",
+  "locked_results": "",
+  "locked_result_count": 0,
+  "next_round": 1,
+  "groups": [
+    {
+      "record": "0-0",
+      "teams": [
+        {
+          "team": "GamerLegion",
+          "seed": 1,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "B8",
+          "seed": 2,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "HEROIC",
+          "seed": 3,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "BetBoom",
+          "seed": 4,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "BIG",
+          "seed": 5,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "M80",
+          "seed": 6,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "MIBR",
+          "seed": 7,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "SINNERS",
+          "seed": 8,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "NRG",
+          "seed": 9,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "TYLOO",
+          "seed": 10,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "Sharks",
+          "seed": 11,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "Gaimin Gladiators",
+          "seed": 12,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "Liquid",
+          "seed": 13,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "Lynn Vision",
+          "seed": 14,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "THUNDER dOWNUNDER",
+          "seed": 15,
+          "buchholz": 0,
+          "opponents": []
+        },
+        {
+          "team": "FlyQuest",
+          "seed": 16,
+          "buchholz": 0,
+          "opponents": []
+        }
+      ]
+    }
+  ],
+  "pairings": [
+    {
+      "record": "0-0",
+      "team1": "GamerLegion",
+      "team1_seed": 1,
+      "team1_buchholz": 0,
+      "team2": "NRG",
+      "team2_seed": 9,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "B8",
+      "team1_seed": 2,
+      "team1_buchholz": 0,
+      "team2": "TYLOO",
+      "team2_seed": 10,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "HEROIC",
+      "team1_seed": 3,
+      "team1_buchholz": 0,
+      "team2": "Sharks",
+      "team2_seed": 11,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "BetBoom",
+      "team1_seed": 4,
+      "team1_buchholz": 0,
+      "team2": "Gaimin Gladiators",
+      "team2_seed": 12,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "BIG",
+      "team1_seed": 5,
+      "team1_buchholz": 0,
+      "team2": "Liquid",
+      "team2_seed": 13,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "M80",
+      "team1_seed": 6,
+      "team1_buchholz": 0,
+      "team2": "Lynn Vision",
+      "team2_seed": 14,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "MIBR",
+      "team1_seed": 7,
+      "team1_buchholz": 0,
+      "team2": "THUNDER dOWNUNDER",
+      "team2_seed": 15,
+      "team2_buchholz": 0
+    },
+    {
+      "record": "0-0",
+      "team1": "SINNERS",
+      "team1_seed": 8,
+      "team1_buchholz": 0,
+      "team2": "FlyQuest",
+      "team2_seed": 16,
+      "team2_buchholz": 0
+    }
+  ],
+  "rule_notes": [
+    "首轮按 1-9、2-10、...、8-16 配对。",
+    "后续每轮先按同战绩分组，再按 Buchholz 分数降序、种子升序排序。",
+    "第 4/5 轮的 6 队组使用 Valve/majors.im 的 15 行优先配对表，并避免重复交手。",
+    "非 6 队组在前 3 轮取第一个合法高低配；后 2 轮取差距分最高的合法高低配。"
+  ]
+}

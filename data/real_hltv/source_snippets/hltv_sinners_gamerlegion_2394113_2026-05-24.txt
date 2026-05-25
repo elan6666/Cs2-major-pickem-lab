@@ -1,0 +1,25 @@
+Source URL: https://www.hltv.org/matches/2394113/match
+Fetched/opened through web.open/find on 2026-05-24.
+
+Official HLTV match page excerpt:
+- SINNERS 1 : 2 GamerLegion
+- Date: 11th of May 2026
+- Event: IEM Atlanta 2026
+- Match state: Match over
+- Format/context: Best of 3 (LAN), Group B upper bracket quarter-final
+- Veto:
+  1. SINNERS removed Anubis
+  2. GamerLegion removed Dust2
+  3. SINNERS picked Mirage
+  4. GamerLegion picked Inferno
+  5. SINNERS removed Ancient
+  6. GamerLegion removed Overpass
+  7. Nuke was left over
+- Maps:
+  - Mirage: SINNERS 13, GamerLegion 10
+  - Inferno: SINNERS 9, GamerLegion 13
+  - Nuke: SINNERS 8, GamerLegion 13
+- HLTV page also lists recent head-to-head maps:
+  - 24/2/26, Parken Challenger Championship Season 1, Inferno: SINNERS 14, GamerLegion 16
+  - 24/2/26, Parken Challenger Championship Season 1, Nuke: SINNERS 7, GamerLegion 13
+  - 22/2/26, Parken Challenger Championship Season 1, Mirage: SINNERS 19, GamerLegion 16

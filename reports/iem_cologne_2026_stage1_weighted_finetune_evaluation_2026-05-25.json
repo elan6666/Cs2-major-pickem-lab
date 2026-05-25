@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "model": "weighted-finetune",
+      "pass_probability": 0.6195,
+      "expected_correct": 4.8499,
+      "brier_score": 0.05032409375000001,
+      "log_loss": 0.20194426123558917,
+      "advance_accuracy": 0.90625,
+      "history_events": 2,
+      "history_teams": 32
+    },
+    {
+      "model": "shallow-old",
+      "pass_probability": 0.5928,
+      "expected_correct": 4.7857,
+      "brier_score": 0.1260505,
+      "log_loss": 0.39868330661153195,
+      "advance_accuracy": 0.84375,
+      "history_events": 2,
+      "history_teams": 32
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+team,map,win_rate,maps_played,pick_rate,ban_rate,pistol_win_rate,first_kill_round_win_rate,first_death_round_win_rate,source
+B8,de_ancient,61.11,18,35.29,1.16,,,,bo3.gg match maps + team map_pool aggregate
+B8,de_anubis,0.00,2,0.00,33.72,,,,bo3.gg match maps + team map_pool aggregate
+B8,de_dust2,53.33,15,2.94,3.49,,,,bo3.gg match maps + team map_pool aggregate
+B8,de_inferno,11.11,9,0.00,19.77,,,,bo3.gg match maps + team map_pool aggregate
+B8,de_mirage,55.00,20,61.76,1.16,,,,bo3.gg match maps + team map_pool aggregate
+B8,de_nuke,30.00,10,0.00,20.93,,,,bo3.gg match maps + team map_pool aggregate
+B8,de_overpass,37.50,8,0.00,19.77,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_ancient,56.25,16,27.27,2.67,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_anubis,57.14,7,0.00,17.33,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_dust2,55.56,9,6.06,22.67,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_inferno,80.00,5,12.12,13.33,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_mirage,72.73,11,6.06,16.00,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_nuke,50.00,4,3.03,26.67,,,,bo3.gg match maps + team map_pool aggregate
+BIG,de_overpass,66.67,18,45.45,1.33,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_ancient,46.67,15,14.71,10.84,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_anubis,63.64,11,11.76,8.43,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_dust2,58.33,12,14.71,13.25,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_inferno,50.00,0,0.00,39.76,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_mirage,52.94,17,23.53,9.64,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_nuke,47.37,19,29.41,6.02,,,,bo3.gg match maps + team map_pool aggregate
+BetBoom,de_overpass,40.00,15,5.88,12.05,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_ancient,50.00,4,0.00,30.00,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_anubis,66.67,6,60.00,0.00,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_dust2,42.86,7,26.67,6.67,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_inferno,50.00,2,6.67,6.67,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_mirage,33.33,3,0.00,13.33,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_nuke,16.67,6,6.67,10.00,,,,bo3.gg match maps + team map_pool aggregate
+FlyQuest,de_overpass,0.00,1,0.00,33.33,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_ancient,57.14,7,10.00,4.08,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_anubis,0.00,1,0.00,28.57,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_dust2,45.45,11,65.00,2.04,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_inferno,25.00,4,5.00,14.29,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_mirage,0.00,2,0.00,38.78,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_nuke,27.27,11,5.00,8.16,,,,bo3.gg match maps + team map_pool aggregate
+Gaimin Gladiators,de_overpass,50.00,4,15.00,4.08,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_ancient,70.00,10,3.70,8.70,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_anubis,25.00,4,0.00,26.09,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_dust2,0.00,3,0.00,40.58,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_inferno,64.29,14,37.04,2.90,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_mirage,55.56,18,44.44,0.00,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_nuke,58.33,12,7.41,10.14,,,,bo3.gg match maps + team map_pool aggregate
+GamerLegion,de_overpass,50.00,6,7.41,11.59,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_ancient,37.50,8,0.00,21.13,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_anubis,50.00,0,0.00,46.48,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_dust2,66.67,18,21.21,2.82,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_inferno,42.86,14,12.12,4.23,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_mirage,33.33,12,18.18,9.86,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_nuke,62.50,16,45.45,0.00,,,,bo3.gg match maps + team map_pool aggregate
+HEROIC,de_overpass,37.50,8,3.03,15.49,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_ancient,26.67,15,20.00,6.15,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_anubis,33.33,3,4.00,13.85,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_dust2,27.27,11,20.00,13.85,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_inferno,60.00,10,4.00,12.31,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_mirage,50.00,10,36.00,3.08,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_nuke,25.00,12,16.00,4.62,,,,bo3.gg match maps + team map_pool aggregate
+Liquid,de_overpass,50.00,0,0.00,46.15,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_ancient,0.00,7,4.76,2.33,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_anubis,0.00,2,0.00,20.93,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_dust2,25.00,12,71.43,4.65,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_inferno,14.29,7,9.52,6.98,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_mirage,50.00,0,0.00,46.51,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_nuke,20.00,5,9.52,9.30,,,,bo3.gg match maps + team map_pool aggregate
+Lynn Vision,de_overpass,0.00,1,4.76,9.30,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_ancient,14.29,7,12.00,12.31,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_anubis,50.00,6,12.00,7.69,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_dust2,66.67,9,0.00,12.31,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_inferno,53.85,13,40.00,3.08,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_mirage,54.55,11,28.00,4.62,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_nuke,50.00,0,0.00,46.15,,,,bo3.gg match maps + team map_pool aggregate
+M80,de_overpass,57.14,7,8.00,13.85,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_ancient,80.00,15,23.08,5.77,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_anubis,87.50,8,11.54,3.85,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_dust2,50.00,0,0.00,50.00,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_inferno,69.23,13,42.31,5.77,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_mirage,58.33,12,19.23,5.77,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_nuke,44.44,9,3.85,9.62,,,,bo3.gg match maps + team map_pool aggregate
+MIBR,de_overpass,44.44,9,0.00,19.23,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_ancient,54.55,11,22.73,8.51,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_anubis,0.00,2,4.55,17.02,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_dust2,0.00,7,13.64,25.53,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_inferno,50.00,8,27.27,2.13,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_mirage,72.73,11,31.82,4.26,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_nuke,11.11,9,0.00,21.28,,,,bo3.gg match maps + team map_pool aggregate
+NRG,de_overpass,0.00,3,0.00,21.28,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_ancient,60.00,15,2.63,15.09,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_anubis,50.00,0,0.00,44.34,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_dust2,43.75,16,26.32,6.60,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_inferno,33.33,9,5.26,16.04,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_mirage,66.67,18,39.47,1.89,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_nuke,46.15,13,15.79,5.66,,,,bo3.gg match maps + team map_pool aggregate
+SINNERS,de_overpass,83.33,12,10.53,10.38,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_ancient,36.36,11,15.15,9.52,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_anubis,75.00,4,9.09,6.35,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_dust2,50.00,0,0.00,47.62,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_inferno,41.67,12,30.30,12.70,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_mirage,30.00,10,3.03,11.11,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_nuke,50.00,22,42.42,0.00,,,,bo3.gg match maps + team map_pool aggregate
+Sharks,de_overpass,27.27,11,0.00,12.70,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_ancient,40.00,5,0.00,6.67,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_anubis,100.00,2,25.00,13.33,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_dust2,0.00,1,0.00,13.33,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_inferno,33.33,6,30.56,0.00,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_mirage,50.00,0,0.00,49.33,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_nuke,0.00,3,44.44,2.67,,,,bo3.gg match maps + team map_pool aggregate
+THUNDER dOWNUNDER,de_overpass,0.00,7,0.00,14.67,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_ancient,26.67,15,0.00,16.18,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_anubis,0.00,2,0.00,19.12,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_dust2,50.00,0,0.00,48.53,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_inferno,63.64,11,35.48,2.94,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_mirage,66.67,12,38.71,2.94,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_nuke,57.14,7,6.45,10.29,,,,bo3.gg match maps + team map_pool aggregate
+TYLOO,de_overpass,50.00,10,19.35,0.00,,,,bo3.gg match maps + team map_pool aggregate

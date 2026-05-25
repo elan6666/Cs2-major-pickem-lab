@@ -1,0 +1,180 @@
+{
+  "model": "factor-weight-veto-calibrated",
+  "weights": {
+    "base_strength_factor": 0.32999999999999996,
+    "hltv_rating_factor": 0.15,
+    "firepower_factor": 0.1,
+    "map_pool_depth_factor": 0.08,
+    "sample_confidence_factor": 0.08,
+    "opponent_quality_proxy_factor": 0.13999999999999999,
+    "roster_data_factor": 0.05,
+    "seed_path_factor": 0.07
+  },
+  "prior_weights": {
+    "base_strength_factor": 0.35,
+    "hltv_rating_factor": 0.15,
+    "firepower_factor": 0.1,
+    "map_pool_depth_factor": 0.08,
+    "sample_confidence_factor": 0.08,
+    "opponent_quality_proxy_factor": 0.12,
+    "roster_data_factor": 0.05,
+    "seed_path_factor": 0.07
+  },
+  "event_ids": [
+    "blast_austin_major_2025_stage1",
+    "starladder_budapest_major_2025_stage1"
+  ],
+  "simulations": 800,
+  "seed": 20260524,
+  "rounds": 2,
+  "step_sizes": [
+    0.04,
+    0.02
+  ],
+  "regularization": 0.08,
+  "calibration_json": "reports/stage1_factor_veto_calibration.json",
+  "simulation_config": {
+    "scale": 150.0,
+    "bo1_shrink": 0.55,
+    "bo3_shrink": 0.9,
+    "veto_weight": 1.0
+  },
+  "training_metrics": {
+    "objective": 0.48558302868056885,
+    "unregularized_objective": 0.48522493344247364,
+    "regularization_penalty": 0.000358095238095238,
+    "brier": 0.15826220703125002,
+    "advanced_log_loss": 0.6165856015556058,
+    "went_3_0_log_loss": 0.37581670400558953,
+    "went_0_3_log_loss": 0.3319118266530935,
+    "advanced_brier": 0.21305136718750003,
+    "went_3_0_brier": 0.10755390625,
+    "went_0_3_brier": 0.09939218750000002
+  },
+  "historical_factor_std": {
+    "base_strength_factor": 28.195377107504253,
+    "hltv_rating_factor": 0.0,
+    "firepower_factor": 0.0,
+    "map_pool_depth_factor": 0.0,
+    "sample_confidence_factor": 0.0,
+    "opponent_quality_proxy_factor": 14.563975247163805,
+    "roster_data_factor": 0.0,
+    "seed_path_factor": 30.731589000570732
+  },
+  "trace": [
+    {
+      "round": 0,
+      "weights": {
+        "base_strength_factor": 0.35,
+        "hltv_rating_factor": 0.15,
+        "firepower_factor": 0.1,
+        "map_pool_depth_factor": 0.08,
+        "sample_confidence_factor": 0.08,
+        "opponent_quality_proxy_factor": 0.12,
+        "roster_data_factor": 0.05,
+        "seed_path_factor": 0.07
+      },
+      "metrics": {
+        "objective": 0.49595374207461745,
+        "unregularized_objective": 0.49595374207461745,
+        "regularization_penalty": 0.0,
+        "brier": 0.16257199707031247,
+        "advanced_log_loss": 0.6347374719049967,
+        "went_3_0_log_loss": 0.3799755695886987,
+        "went_0_3_log_loss": 0.33436445489977756,
+        "advanced_brier": 0.22153730468749994,
+        "went_3_0_brier": 0.10810878906250002,
+        "went_0_3_brier": 0.09910458984375001
+      }
+    },
+    {
+      "round": 1,
+      "weights": {
+        "base_strength_factor": 0.35,
+        "hltv_rating_factor": 0.15,
+        "firepower_factor": 0.1,
+        "map_pool_depth_factor": 0.08,
+        "sample_confidence_factor": 0.08,
+        "opponent_quality_proxy_factor": 0.12,
+        "roster_data_factor": 0.05,
+        "seed_path_factor": 0.07
+      },
+      "metrics": {
+        "objective": 0.49595374207461745,
+        "unregularized_objective": 0.49595374207461745,
+        "regularization_penalty": 0.0,
+        "brier": 0.16257199707031247,
+        "advanced_log_loss": 0.6347374719049967,
+        "went_3_0_log_loss": 0.3799755695886987,
+        "went_0_3_log_loss": 0.33436445489977756,
+        "advanced_brier": 0.22153730468749994,
+        "went_3_0_brier": 0.10810878906250002,
+        "went_0_3_brier": 0.09910458984375001
+      }
+    },
+    {
+      "round": 2,
+      "weights": {
+        "base_strength_factor": 0.32999999999999996,
+        "hltv_rating_factor": 0.15,
+        "firepower_factor": 0.1,
+        "map_pool_depth_factor": 0.08,
+        "sample_confidence_factor": 0.08,
+        "opponent_quality_proxy_factor": 0.13999999999999999,
+        "roster_data_factor": 0.05,
+        "seed_path_factor": 0.07
+      },
+      "metrics": {
+        "objective": 0.48558302868056885,
+        "unregularized_objective": 0.48522493344247364,
+        "regularization_penalty": 0.000358095238095238,
+        "brier": 0.15826220703125002,
+        "advanced_log_loss": 0.6165856015556058,
+        "went_3_0_log_loss": 0.37581670400558953,
+        "went_0_3_log_loss": 0.3319118266530935,
+        "advanced_brier": 0.21305136718750003,
+        "went_3_0_brier": 0.10755390625,
+        "went_0_3_brier": 0.09939218750000002
+      }
+    }
+  ],
+  "backtest_folds": [
+    {
+      "test_event_id": "blast_austin_major_2025_stage1",
+      "selected_weights": {
+        "base_strength_factor": 0.35000000000000003,
+        "hltv_rating_factor": 0.13000000000000003,
+        "firepower_factor": 0.10000000000000002,
+        "map_pool_depth_factor": 0.08000000000000002,
+        "sample_confidence_factor": 0.08000000000000002,
+        "opponent_quality_proxy_factor": 0.12000000000000001,
+        "roster_data_factor": 0.05000000000000001,
+        "seed_path_factor": 0.09000000000000002
+      },
+      "train_objective": 0.49528216907926115,
+      "test_objective": 0.47625915661058554,
+      "test_brier": 0.15916132812499997
+    },
+    {
+      "test_event_id": "starladder_budapest_major_2025_stage1",
+      "selected_weights": {
+        "base_strength_factor": 0.39000000000000007,
+        "hltv_rating_factor": 0.13,
+        "firepower_factor": 0.10000000000000003,
+        "map_pool_depth_factor": 0.08000000000000002,
+        "sample_confidence_factor": 0.08000000000000002,
+        "opponent_quality_proxy_factor": 0.10000000000000002,
+        "roster_data_factor": 0.05000000000000002,
+        "seed_path_factor": 0.07000000000000002
+      },
+      "train_objective": 0.46302092563940406,
+      "test_objective": 0.5213217733624602,
+      "test_brier": 0.167230615234375
+    }
+  ],
+  "limitations": [
+    "Only two new-format Stage 1 events are available.",
+    "Historical snapshots do not include full HLTV/KD/map-depth/current-roster fields, so some factor weights are weakly identifiable.",
+    "Weights are constrained by a prior regularization term and should remain experimental."
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "model_path": "reports/models/bo3_stage1_catboost_pairwise_weighted_finetune_2026-05-25.cbm",
+  "features": [
+    "score_diff",
+    "seed_diff_higher_is_better",
+    "vrs_points_diff",
+    "hltv_rating3_diff",
+    "hltv_kd_diff",
+    "hltv_maps_log_diff",
+    "base_strength_factor_diff",
+    "seed_path_factor_diff",
+    "hltv_rating_factor_diff",
+    "firepower_factor_diff",
+    "map_pool_depth_factor_diff",
+    "sample_confidence_factor_diff",
+    "opponent_quality_proxy_factor_diff",
+    "roster_data_factor_diff",
+    "overall_factor_rating_diff",
+    "glicko_mean_diff",
+    "glicko_uncertainty_diff",
+    "glicko_expected",
+    "team",
+    "opponent",
+    "region",
+    "opponent_region",
+    "same_region",
+    "event_id",
+    "format_type",
+    "round_system"
+  ],
+  "categorical_features": [
+    "team",
+    "opponent",
+    "region",
+    "opponent_region",
+    "same_region",
+    "event_id",
+    "format_type",
+    "round_system"
+  ],
+  "example_count": 1924,
+  "positive_rate": 0.5,
+  "params": {
+    "iterations": 300,
+    "depth": 4,
+    "learning_rate": 0.035,
+    "l2_leaf_reg": 10.0
+  },
+  "stage1_training_mode": "last_4_month_bo3_pretrain",
+  "stage1_pretrain_match_map_rows": 1500,
+  "stage2_training_mode": "combined_weighted_bo3_pretrain_major_finetune",
+  "stage2_major_pairwise_rows": 424,
+  "pretrain_weight_scale": 1.0,
+  "major_weight_scale": 2.5,
+  "snapshots": [
+    "data/snapshots/blast_austin_major_2025_stage1_2025-06-02.csv",
+    "data/snapshots/starladder_budapest_major_2025_stage1_2025-10-06.csv"
+  ],
+  "labels": [
+    "data/labels/blast_austin_2025_stage1_labels.csv",
+    "data/labels/starladder_budapest_2025_stage1_labels.csv"
+  ],
+  "warning": ""
+}

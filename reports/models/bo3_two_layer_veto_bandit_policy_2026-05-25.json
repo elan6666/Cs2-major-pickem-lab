@@ -1,0 +1,38 @@
+{
+  "mode": "two_layer_recent_bo3_with_major_correction",
+  "recent_source": "data/bo3/bo3_stage1_last4months_veto_actions_complete_2026-05-25.csv",
+  "major_source": "data/bo3/bo3_major_veto_actions_complete_2026-05-25.csv",
+  "recent_example_count": 2622,
+  "major_example_count": 1484,
+  "map_rewards": {
+    "Ancient": 0.4612299465240642,
+    "Anubis": 0.5266666666666666,
+    "Dust2": 0.52,
+    "Inferno": 0.4826666666666667,
+    "Mirage": 0.4919786096256685,
+    "Nuke": 0.46,
+    "Overpass": 0.49866310160427807
+  },
+  "action_rewards": {
+    "ban": 0.4993506493506494,
+    "leftover": 0.5,
+    "pick": 0.4703389830508475
+  },
+  "major_map_corrections": {
+    "Ancient": 0.05056250630612452,
+    "Anubis": 0.05352201257861644,
+    "Dust2": -0.09075471698113208,
+    "Inferno": 0.03855974842767296,
+    "Mirage": -0.03443143981434771,
+    "Nuke": 0.014056603773584864,
+    "Overpass": 0.039072747452325696,
+    "Train": 0.014150943396226467
+  },
+  "major_action_corrections": {
+    "ban": 0.0006493506493506218,
+    "leftover": 0.0,
+    "pick": -0.007973391652998041
+  },
+  "major_correction_weight": 0.5,
+  "exploration": 0.2
+}

@@ -1,0 +1,17 @@
+seed,team,score,region,notes
+1,HEROIC,1552,EU,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=13; vrs_points=1552; vrs_name=HEROIC
+2,Complexity,1433,Americas,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=17; vrs_points=1433; vrs_name=Complexity
+3,TYLOO,1358,Asia,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=18; vrs_points=1358; vrs_name=TYLOO
+4,B8,1275,EU,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=20; vrs_points=1275; vrs_name=B8
+5,FlyQuest,1213,Asia,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=24; vrs_points=1213; vrs_name=FlyQuest
+6,Lynn Vision,1212,Asia,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=25; vrs_points=1212; vrs_name=Lynn Vision
+7,NRG,1121,Americas,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=32; vrs_points=1121; vrs_name=NRG
+8,BetBoom,1102,EU,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=36; vrs_points=1102; vrs_name=BetBoom
+9,OG,1097,EU,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=38; vrs_points=1097; vrs_name=OG
+10,Chinggis Warriors,1087,Asia,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=40; vrs_points=1087; vrs_name=Chinggis Warriors
+11,Imperial,1074,Americas,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=41; vrs_points=1074; vrs_name=Imperial
+12,Nemiga,1045,EU,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=45; vrs_points=1045; vrs_name=Nemiga
+13,Wildcard,1037,Americas,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=48; vrs_points=1037; vrs_name=Wildcard
+14,Legacy,1035,Americas,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=49; vrs_points=1035; vrs_name=Legacy
+15,Fluxo,999,Americas,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=55; vrs_points=999; vrs_name=Fluxo
+16,Metizport,959,EU,source=blast_austin_major_2025_stage1; prediction_cutoff=2025-06-02; vrs_rank=60; vrs_points=959; vrs_name=Metizport

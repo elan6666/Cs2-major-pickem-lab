@@ -1,0 +1,20 @@
+Source URL: https://www.hltv.org/matches/2393415/big-vs-heroic-cct-global-finals-2026
+Fetched/opened through web.open/find on 2026-05-24.
+
+Official HLTV match page excerpt:
+- BIG 0 : 2 HEROIC
+- Date: 24th of April 2026
+- Event: CCT Global Finals 2026
+- Match state: Match over
+- Format/context: Best of 3 (LAN), Upper bracket semi-final
+- Veto:
+  1. HEROIC removed Anubis
+  2. BIG removed Nuke
+  3. HEROIC picked Dust2
+  4. BIG picked Overpass
+  5. HEROIC removed Ancient
+  6. BIG removed Inferno
+  7. Mirage was left over
+- Maps:
+  - Dust2: BIG 9, HEROIC 13
+  - Overpass: BIG 7, HEROIC 13

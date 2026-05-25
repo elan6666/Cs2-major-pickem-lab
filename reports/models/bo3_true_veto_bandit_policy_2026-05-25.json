@@ -1,0 +1,19 @@
+{
+  "source": "data/bo3/bo3_stage1_last4months_veto_actions_2026-05-25.csv",
+  "example_count": 2510,
+  "map_rewards": {
+    "Ancient": 0.46089385474860334,
+    "Anubis": 0.5250696378830083,
+    "Dust2": 0.5167130919220055,
+    "Inferno": 0.4860724233983287,
+    "Mirage": 0.4888268156424581,
+    "Nuke": 0.44986072423398327,
+    "Overpass": 0.505586592178771
+  },
+  "action_rewards": {
+    "ban": 0.4993252361673414,
+    "leftover": 0.5,
+    "pick": 0.46567164179104475
+  },
+  "exploration": 0.2
+}

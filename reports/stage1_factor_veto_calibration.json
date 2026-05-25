@@ -1,0 +1,63 @@
+{
+  "model": "factor-veto-calibrated",
+  "score_column": "score",
+  "event_ids": [
+    "blast_austin_major_2025_stage1",
+    "starladder_budapest_major_2025_stage1"
+  ],
+  "simulations": 2500,
+  "seed": 20260524,
+  "objective_weights": {
+    "advanced": 0.5,
+    "went_3_0": 0.25,
+    "went_0_3": 0.25
+  },
+  "candidate_count": 75,
+  "parameters": {
+    "scale": 150.0,
+    "bo1_shrink": 0.55,
+    "bo3_shrink": 0.9,
+    "veto_weight": 1.0
+  },
+  "training_metrics": {
+    "objective": 0.513725441580297,
+    "brier": 0.164685255,
+    "advanced_log_loss": 0.658007942345919,
+    "went_3_0_log_loss": 0.4172196962833801,
+    "went_0_3_log_loss": 0.3216661853459697,
+    "advanced_brier": 0.22816481,
+    "went_3_0_brier": 0.11027185999999999,
+    "went_0_3_brier": 0.09213954
+  },
+  "backtest_folds": [
+    {
+      "test_event_id": "blast_austin_major_2025_stage1",
+      "selected_parameters": {
+        "scale": 150.0,
+        "bo1_shrink": 0.55,
+        "bo3_shrink": 0.9,
+        "veto_weight": 1.0
+      },
+      "train_objective": 0.5452327919937067,
+      "test_objective": 0.4669840848024674,
+      "test_brier": 0.15776467
+    },
+    {
+      "test_event_id": "starladder_budapest_major_2025_stage1",
+      "selected_parameters": {
+        "scale": 150.0,
+        "bo1_shrink": 0.55,
+        "bo3_shrink": 0.9,
+        "veto_weight": 1.0
+      },
+      "train_objective": 0.46827951241061394,
+      "test_objective": 0.5469459801448158,
+      "test_brier": 0.16947275500000003
+    }
+  ],
+  "limitations": [
+    "Only two new-format Stage 1 events are available.",
+    "Historical map veto stats are not complete, so veto_weight is fixed unless explicitly provided in the grid.",
+    "Use as a small calibration layer, not as proof that factor-veto is fully trained."
+  ]
+}

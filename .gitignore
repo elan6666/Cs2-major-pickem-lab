@@ -1,0 +1,13 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+
+# Local Byte workflow planning files are not part of the public repo.
+.byte-os/
+
+# Raw collection caches stay local; the repo keeps processed latest datasets.
+data/raw/bo3/
+data/raw/hltv/*.html

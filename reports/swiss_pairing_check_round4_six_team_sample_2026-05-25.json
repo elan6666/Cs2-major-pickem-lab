@@ -1,0 +1,200 @@
+{
+  "teams": "data/iem_cologne_2026_stage1_teams.csv",
+  "locked_results": "data/validation/majors_im_cologne_round4_six_team_sample.csv",
+  "locked_result_count": 24,
+  "next_round": 4,
+  "groups": [
+    {
+      "record": "2-1",
+      "teams": [
+        {
+          "team": "HEROIC",
+          "seed": 3,
+          "buchholz": 3,
+          "opponents": [
+            "B8",
+            "M80",
+            "Sharks"
+          ]
+        },
+        {
+          "team": "BetBoom",
+          "seed": 4,
+          "buchholz": 3,
+          "opponents": [
+            "BIG",
+            "Gaimin Gladiators",
+            "GamerLegion"
+          ]
+        },
+        {
+          "team": "BIG",
+          "seed": 5,
+          "buchholz": -1,
+          "opponents": [
+            "BetBoom",
+            "Gaimin Gladiators",
+            "Liquid"
+          ]
+        },
+        {
+          "team": "M80",
+          "seed": 6,
+          "buchholz": -1,
+          "opponents": [
+            "HEROIC",
+            "Lynn Vision",
+            "Sharks"
+          ]
+        },
+        {
+          "team": "MIBR",
+          "seed": 7,
+          "buchholz": -1,
+          "opponents": [
+            "B8",
+            "THUNDER dOWNUNDER",
+            "TYLOO"
+          ]
+        },
+        {
+          "team": "SINNERS",
+          "seed": 8,
+          "buchholz": -1,
+          "opponents": [
+            "FlyQuest",
+            "GamerLegion",
+            "NRG"
+          ]
+        }
+      ]
+    },
+    {
+      "record": "1-2",
+      "teams": [
+        {
+          "team": "NRG",
+          "seed": 9,
+          "buchholz": 1,
+          "opponents": [
+            "FlyQuest",
+            "GamerLegion",
+            "SINNERS"
+          ]
+        },
+        {
+          "team": "TYLOO",
+          "seed": 10,
+          "buchholz": 1,
+          "opponents": [
+            "B8",
+            "MIBR",
+            "THUNDER dOWNUNDER"
+          ]
+        },
+        {
+          "team": "Sharks",
+          "seed": 11,
+          "buchholz": 1,
+          "opponents": [
+            "HEROIC",
+            "Lynn Vision",
+            "M80"
+          ]
+        },
+        {
+          "team": "Gaimin Gladiators",
+          "seed": 12,
+          "buchholz": 1,
+          "opponents": [
+            "BIG",
+            "BetBoom",
+            "Liquid"
+          ]
+        },
+        {
+          "team": "Liquid",
+          "seed": 13,
+          "buchholz": -3,
+          "opponents": [
+            "BIG",
+            "FlyQuest",
+            "Gaimin Gladiators"
+          ]
+        },
+        {
+          "team": "Lynn Vision",
+          "seed": 14,
+          "buchholz": -3,
+          "opponents": [
+            "M80",
+            "Sharks",
+            "THUNDER dOWNUNDER"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairings": [
+    {
+      "record": "2-1",
+      "team1": "HEROIC",
+      "team1_seed": 3,
+      "team1_buchholz": 3,
+      "team2": "SINNERS",
+      "team2_seed": 8,
+      "team2_buchholz": -1
+    },
+    {
+      "record": "2-1",
+      "team1": "BetBoom",
+      "team1_seed": 4,
+      "team1_buchholz": 3,
+      "team2": "MIBR",
+      "team2_seed": 7,
+      "team2_buchholz": -1
+    },
+    {
+      "record": "2-1",
+      "team1": "BIG",
+      "team1_seed": 5,
+      "team1_buchholz": -1,
+      "team2": "M80",
+      "team2_seed": 6,
+      "team2_buchholz": -1
+    },
+    {
+      "record": "1-2",
+      "team1": "NRG",
+      "team1_seed": 9,
+      "team1_buchholz": 1,
+      "team2": "Lynn Vision",
+      "team2_seed": 14,
+      "team2_buchholz": -3
+    },
+    {
+      "record": "1-2",
+      "team1": "TYLOO",
+      "team1_seed": 10,
+      "team1_buchholz": 1,
+      "team2": "Liquid",
+      "team2_seed": 13,
+      "team2_buchholz": -3
+    },
+    {
+      "record": "1-2",
+      "team1": "Sharks",
+      "team1_seed": 11,
+      "team1_buchholz": 1,
+      "team2": "Gaimin Gladiators",
+      "team2_seed": 12,
+      "team2_buchholz": 1
+    }
+  ],
+  "rule_notes": [
+    "首轮按 1-9、2-10、...、8-16 配对。",
+    "后续每轮先按同战绩分组，再按 Buchholz 分数降序、种子升序排序。",
+    "第 4/5 轮的 6 队组使用 Valve/majors.im 的 15 行优先配对表，并避免重复交手。",
+    "非 6 队组在前 3 轮取第一个合法高低配；后 2 轮取差距分最高的合法高低配。"
+  ]
+}

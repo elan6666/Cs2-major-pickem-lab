@@ -1,0 +1,25 @@
+Source URL: https://www.hltv.org/matches/2394164/liquid-vs-m80-iem-atlanta-2026
+Fetched/opened through web.search/open on 2026-05-24.
+
+Official HLTV match page excerpt:
+- Liquid 2 : 1 M80
+- Date: 13th of May 2026
+- Event: IEM Atlanta 2026
+- Match state: Match over
+- Format/context: Best of 3 (LAN), Group B lower bracket round 1
+- Veto:
+  1. Liquid removed Overpass
+  2. M80 removed Nuke
+  3. Liquid picked Dust2
+  4. M80 picked Inferno
+  5. Liquid removed Anubis
+  6. M80 removed Mirage
+  7. Ancient was left over
+- Maps:
+  - Dust2: Liquid 4, M80 13
+  - Inferno: Liquid 13, M80 8
+  - Ancient: Liquid 13, M80 5
+- HLTV page also lists recent head-to-head maps:
+  - 31/3/26, Digital Crusade DraculaN Season 6, Inferno: Liquid 9, M80 13
+  - 31/3/26, Digital Crusade DraculaN Season 6, Ancient: Liquid 7, M80 13
+  - 4/3/26, ESL Pro League Season 23 Stage 1, Mirage: Liquid 16, M80 13

@@ -1,0 +1,17 @@
+seed,team,score,region,notes
+1,GamerLegion,1566,EU,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=13; vrs_points=1566; vrs_name=GamerLegion
+2,B8,1547,EU,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=16; vrs_points=1547; vrs_name=B8
+3,HEROIC,1482,EU,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=20; vrs_points=1482; vrs_name=HEROIC
+4,BetBoom,1471,EU,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=21; vrs_points=1471; vrs_name=BetBoom
+5,BIG,1445,EU,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=23; vrs_points=1445; vrs_name=BIG
+6,M80,1417,Americas,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=24; vrs_points=1417; vrs_name=M80
+7,MIBR,1402,Americas,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=27; vrs_points=1402; vrs_name=MIBR
+8,SINNERS,1379,EU,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=30; vrs_points=1379; vrs_name=SINNERS
+9,NRG,1375,Americas,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=31; vrs_points=1375; vrs_name=NRG
+10,TYLOO,1348,Asia,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=34; vrs_points=1348; vrs_name=TYLOO
+11,Sharks,1334,Americas,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=37; vrs_points=1334; vrs_name=Sharks
+12,Gaimin Gladiators,1319,Americas,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=40; vrs_points=1319; vrs_name=Gaimin Gladiators
+13,Liquid,1267,Americas,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=47; vrs_points=1267; vrs_name=Liquid
+14,Lynn Vision,1249,Asia,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=49; vrs_points=1249; vrs_name=Lynn Vision
+15,THUNDER dOWNUNDER,1224,Asia,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=56; vrs_points=1224; vrs_name=THUNDER dOWNUNDER
+16,FlyQuest,1164,Asia,source=iem_cologne_major_2026_stage1; prediction_cutoff=2026-05-23; vrs_rank=74; vrs_points=1164; vrs_name=FlyQuest

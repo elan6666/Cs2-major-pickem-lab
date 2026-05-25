@@ -1,0 +1,25 @@
+{
+  "input": "data/snapshots/iem_cologne_major_2026_stage1_hltv_features_2026-05-23.csv",
+  "output": "data/snapshots/iem_cologne_major_2026_stage1_factor_weights_trained_2026-05-25.csv",
+  "weights": {
+    "base_strength_factor": 0.32999999999999996,
+    "hltv_rating_factor": 0.15,
+    "firepower_factor": 0.1,
+    "map_pool_depth_factor": 0.08,
+    "sample_confidence_factor": 0.08,
+    "opponent_quality_proxy_factor": 0.13999999999999999,
+    "roster_data_factor": 0.05,
+    "seed_path_factor": 0.07
+  },
+  "unavailable_factors": [
+    "地图 veto 与 ban/pick 倾向",
+    "单地图近期胜率与按对手排名分层的地图胜率",
+    "T/CT 阵营强度拆分",
+    "手枪局、force-buy、eco、anti-eco 等经济局数据",
+    "选手角色指标，例如 entry、AWP、KAST、ADR、impact、clutch",
+    "战术风格与克制标签",
+    "韧性状态，例如 0-5 落后、加时、图三、淘汰局、晋级局表现",
+    "同阵容、同地图池条件下的近期交手",
+    "赛程压力、旅行、健康、签证与替补信号"
+  ]
+}

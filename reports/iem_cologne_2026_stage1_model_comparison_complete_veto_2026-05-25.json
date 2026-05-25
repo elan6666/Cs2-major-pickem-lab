@@ -1,0 +1,44 @@
+{
+  "models": [
+    {
+      "model": "strict-real-catboost-complete-veto",
+      "path": "reports/iem_cologne_2026_stage1_prediction_strict_real_catboost_complete_veto_2026-05-25.json",
+      "configured_model": "catboost",
+      "three_zero": "HEROIC, M80",
+      "zero_three": "Lynn Vision, Sharks",
+      "advance": "BetBoom, B8, FlyQuest, TYLOO, Liquid, GamerLegion",
+      "pass_probability": 0.7496,
+      "expected_correct": 5.3289
+    },
+    {
+      "model": "vrs-complete-veto",
+      "path": "reports/iem_cologne_2026_stage1_prediction_vrs_complete_veto_2026-05-25.json",
+      "configured_model": "vrs",
+      "three_zero": "B8, HEROIC",
+      "zero_three": "FlyQuest, THUNDER dOWNUNDER",
+      "advance": "BIG, GamerLegion, BetBoom, SINNERS, M80, TYLOO",
+      "pass_probability": 0.7378,
+      "expected_correct": 5.2468
+    },
+    {
+      "model": "factor-complete-veto",
+      "path": "reports/iem_cologne_2026_stage1_prediction_factor_complete_veto_2026-05-25.json",
+      "configured_model": "factor-score",
+      "three_zero": "M80, B8",
+      "zero_three": "FlyQuest, Liquid",
+      "advance": "BIG, BetBoom, GamerLegion, HEROIC, SINNERS, TYLOO",
+      "pass_probability": 0.6374,
+      "expected_correct": 4.9134
+    },
+    {
+      "model": "bo3-catboost-complete-veto",
+      "path": "reports/iem_cologne_2026_stage1_prediction_bo3_catboost_complete_veto_glicko_2026-05-25.json",
+      "configured_model": "catboost",
+      "three_zero": "SINNERS, HEROIC",
+      "zero_three": "Lynn Vision, Liquid",
+      "advance": "BIG, BetBoom, GamerLegion, B8, M80, MIBR",
+      "pass_probability": 0.5928,
+      "expected_correct": 4.7857
+    }
+  ]
+}

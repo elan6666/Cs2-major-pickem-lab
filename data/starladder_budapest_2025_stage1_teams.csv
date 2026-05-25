@@ -1,0 +1,17 @@
+seed,team,score,region,notes
+1,FaZe,1626,EU,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=13; vrs_points=1626; vrs_name=FaZe
+2,GamerLegion,1570,EU,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=15; vrs_points=1570; vrs_name=GamerLegion
+3,Ninjas in Pyjamas,1474,EU,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=18; vrs_points=1474; vrs_name=Ninjas in Pyjamas
+4,B8,1466,EU,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=19; vrs_points=1466; vrs_name=B8
+5,PARIVISION,1455,EU,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=20; vrs_points=1455; vrs_name=PARIVISION
+6,fnatic,1451,EU,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=21; vrs_points=1451; vrs_name=fnatic
+7,Lynn Vision,1405,Asia,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=26; vrs_points=1405; vrs_name=Lynn Vision
+8,Legacy,1394,Americas,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=29; vrs_points=1394; vrs_name=Legacy
+9,Imperial,1360,Americas,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=32; vrs_points=1360; vrs_name=Imperial
+10,M80,1264,Americas,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=37; vrs_points=1264; vrs_name=M80
+11,NRG,1263,Americas,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=39; vrs_points=1263; vrs_name=NRG
+12,The Huns,1260,Asia,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=40; vrs_points=1260; vrs_name=The Huns
+13,FlyQuest,1231,Asia,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=41; vrs_points=1231; vrs_name=FlyQuest
+14,Fluxo,1222,Americas,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=42; vrs_points=1222; vrs_name=Fluxo
+15,RED Canids,1198,Americas,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=46; vrs_points=1198; vrs_name=RED Canids
+16,Rare Atom,1134,Asia,source=starladder_budapest_major_2025_stage1; prediction_cutoff=2025-10-06; vrs_rank=53; vrs_points=1134; vrs_name=Rare Atom

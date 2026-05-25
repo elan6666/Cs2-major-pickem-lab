@@ -1,0 +1,21 @@
+Source URL: https://www.hltv.org/matches/2394109/match
+Fetched/opened through web.open/find on 2026-05-24.
+
+Official HLTV match page excerpt:
+- B8 1 : 2 BetBoom
+- Date: 11th of May 2026
+- Event: IEM Atlanta 2026
+- Match state: Match over
+- Format/context: Best of 3 (LAN), Group A upper bracket quarter-final
+- Veto:
+  1. B8 removed Anubis
+  2. BetBoom removed Inferno
+  3. B8 picked Mirage
+  4. BetBoom picked Nuke
+  5. B8 removed Overpass
+  6. BetBoom removed Ancient
+  7. Dust2 was left over
+- Maps:
+  - Mirage: B8 16, BetBoom 14
+  - Nuke: B8 8, BetBoom 13
+  - Dust2: B8 5, BetBoom 13

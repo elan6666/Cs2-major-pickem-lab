@@ -1,0 +1,18 @@
+{
+  "source": "data/raw/hltv/iem_cologne_2026_stage1_map_stats_2026-05-23.csv",
+  "mode": "map_stats_prior_bandit",
+  "map_rewards": {
+    "Ancient": 0.16050000000000003,
+    "Anubis": 0.21050000000000002,
+    "Dust2": 0.060166666666666674,
+    "Inferno": 0.09783333333333333,
+    "Mirage": 0.09249999999999999,
+    "Nuke": 0.09983333333333334,
+    "Overpass": 0.021375000000000005
+  },
+  "action_rewards": {
+    "pick": 0.05,
+    "ban": -0.03
+  },
+  "exploration": 0.2
+}

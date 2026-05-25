@@ -1,0 +1,17 @@
+seed,team,score,region,notes
+1,Team Alpha,1840,EU,synthetic sample
+2,Team Bravo,1805,EU,synthetic sample
+3,Team Circuit,1770,Americas,synthetic sample
+4,Team Delta,1740,EU,synthetic sample
+5,Team Eclipse,1715,Asia,synthetic sample
+6,Team Flux,1690,EU,synthetic sample
+7,Team Glitch,1665,Americas,synthetic sample
+8,Team Helix,1640,EU,synthetic sample
+9,Team Ion,1615,Asia,synthetic sample
+10,Team Jolt,1590,Americas,synthetic sample
+11,Team Kilo,1565,EU,synthetic sample
+12,Team Lynx,1540,Asia,synthetic sample
+13,Team Mirage,1515,Americas,synthetic sample
+14,Team Nova,1490,EU,synthetic sample
+15,Team Orbit,1465,Asia,synthetic sample
+16,Team Pulse,1440,Americas,synthetic sample
